@@ -4,7 +4,9 @@
 
 This application example shows how to use the state framework of the package `@simatic-ax/statemachine`. In this example a simple traffic light will be realized.
 
-```mermaid
+![statechart](doc/state.png)
+
+<!-- ```mermaid
 graph LR;
     
     Init-->|3s|Red;
@@ -14,7 +16,7 @@ graph LR;
     Yellow-->|1.5s|CheckCycles;
     CheckCycles-->|1. after 5 cycles|Init
     CheckCycles-->|2. Alternatively|Init
-```
+``` -->
 ## Execute the Application Example (AX Code local)
 1. If not open, open a terminal (`CTRL+SHIFT+ö`)
 1. Start a PLCSIM Advanced Instance (IP: Address 192.168.0.1)
