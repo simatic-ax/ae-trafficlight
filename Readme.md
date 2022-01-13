@@ -15,6 +15,25 @@ graph LR;
     CheckCycles-->|1. after 5 cycles|Init
     CheckCycles-->|2. Alternatively|Init
 ```
+## Execute the Application Example (AX Code local)
+1. If not open, open a terminal (`CTRL+SHIFT+ö`)
+1. Start a PLCSIM Advanced Instance (IP: Address 192.168.0.1)
+1. Install dependencies
+   
+   ```cli
+   apax install -L
+   ```
+1. Build in download the project to the PLC
+   
+   ```cli
+   apax dlsim
+   ```
+   
+   The project will be compiled and downloaded to the PLCSIM Advanced instance
+   
+1. Open the monitoring file mon.mon
+1. Go online
+ 
 
 ## Contribution
 
