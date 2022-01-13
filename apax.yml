@@ -1,0 +1,33 @@
+name: ae-trafficlight
+version: 0.0.0
+type: app
+targets:
+  - "plcsim"
+  # - axunit-llvm
+variables:
+  APAX_BUILD_ARGS:
+    - --debug
+    - --log Trace
+  BIN_FOLDER: "./bin/plcsim"
+  IP_ADDRESS: "192.168.0.1"
+  WATCHLISTS: "./watchlist"
+scripts:
+  load: sld -i $BIN_FOLDER -t $IP_ADDRESS -r --accept-security-disclaimer -l debug
+    --default-server-interface
+  reset: apax hwld --resetPlc:keepOnlyIP --targetIP $IP_ADDRESS
+    --accept-security-disclaimer
+  loadhwcn: apax hwld --input ./hwcn/MMC --targetIP $IP_ADDRESS
+    --accept-security-disclaimer
+  watch: apax mon  -t $IP_ADDRESS -f ./watchfiles/mon.mon -c
+  dlsim:
+    - apax build
+    - apax load
+devDependencies:
+  "@ax/sdk": 1.0.127
+  "@simatic-ax/snippetscollection": 0.0.4
+registries:
+  '@simatic-ax': 'https://npm.pkg.github.com/'
+dependencies:
+  "@simatic-ax/statemachine": 0.1.0
+  "@simatic-ax/simple-control-modules": 0.0.5
+  "@simatic-ax/io": 0.1.2
