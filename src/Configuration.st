@@ -17,7 +17,8 @@ CONFIGURATION MyConfiguration
 
         QRd AT %Q0.0 : BOOL;
         QYe AT %Q0.1 : BOOL;
-        QGn AT %Q0.2 : BOOL;
+        QGn AT %Q0.2 : BOOL;        
+        QBl AT %Q0.3 : BOOL;
         ActiveStateName : STRING;
 
         // Initial State
