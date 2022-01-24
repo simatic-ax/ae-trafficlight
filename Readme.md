@@ -7,8 +7,24 @@ This application example shows how to use the state framework of the package `@s
 ![statechart](doc/state.png)
 
 ## Execute the Application Example (AX Code local)
+1. Open a CLI and switch to the target folder like:
+      ```cli
+      D:
+      cd \Git
+      ```
+1. Clone the repository and open `AX Code`
+
+1. 
+      ```
+      git clone git@github.com:simatic-ax/ae-trafficlight.git
+      cd ae-trafficlight 
+      AxCode .
+      ```
+
 1. If not open, open a terminal (`CTRL+SHIFT+ö`)
-1. Start a PLCSIM Advanced Instance (IP: Address 192.168.0.1)
+   
+1. Start a PLCSIM Advanced Instance (IP: Address 192.168.0.1). To change the IP you'll find information [here](#tips-and-tricks)
+
 1. Install dependencies
    
    ```cli
@@ -23,8 +39,18 @@ This application example shows how to use the state framework of the package `@s
    The project will be compiled and downloaded to the PLCSIM Advanced instance
    
 1. Open the monitoring file mon.mon
+
 1. Go online
  
+## Tips and tricks
+
+### Change the IP address for the downloader
+
+To change the target IP address, open the `apax.yml` and search the entry `IP_ADDRESS`, Enter the IP address for your target.
+
+### Change the IP address for the online debugging and monitoring
+
+To change the IP address for the debugging, open the file `./vscode/launch.json` and search the entry `ip`, Enter the IP address for your device.
 
 ## Contribution
 
