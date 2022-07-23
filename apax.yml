@@ -23,11 +23,11 @@ scripts:
     - apax build
     - apax load
 devDependencies:
-  "@ax/sdk": 1.0.127
-  "@simatic-ax/snippetscollection": 0.0.4
+  "@ax/sdk": 1.0.175
+  "@simatic-ax/snippetscollection": 0.0.13
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
 dependencies:
   "@simatic-ax/statemachine": 0.1.0
-  "@simatic-ax/simple-control-modules": 0.0.5
+  "@simatic-ax/simple-control-modules": 0.1.0
   "@simatic-ax/io": 0.1.2
