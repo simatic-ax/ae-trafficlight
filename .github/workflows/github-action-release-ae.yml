@@ -175,13 +175,9 @@ jobs:
           cd ./tmp
           echo apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
-
-
-      - name: "Get the current version" 
-        run:
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
-          cd ./template
-    
+          cd ./template         
+
       - name: "create version" 
         run: |
           cat ./../../.version
