@@ -172,6 +172,7 @@ jobs:
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
           cd ./template         
+          cd ..
 
       - name: "Download artifact with version"
         uses: actions/download-artifact@v3
