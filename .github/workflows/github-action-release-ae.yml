@@ -150,11 +150,6 @@ jobs:
         with:
           apax-access-token: ${{ secrets.APAX_TOKEN }}    
       
-      - name: "Download artifact"
-        uses: actions/download-artifact@v3
-        with:
-          name: version      
-      
       - name: "Login to AX registry"
         run: apax login --password ${{ secrets.APAX_TOKEN }}
       
@@ -178,10 +173,15 @@ jobs:
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
           cd ./template         
 
+      - name: "Download artifact with version"
+        uses: actions/download-artifact@v3
+        with:
+          name: version      
+
       - name: "create version" 
         run: |
-          cat ./../../.version
-          apax version "$(cat ./../../.version)" 
+          cat .version
+          apax version "$(cat .version)" 
           apax pack 2>.package.err 1>.signature
 
           PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
