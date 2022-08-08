@@ -180,7 +180,7 @@ jobs:
           mv $PACKAGE simatic-ax-$PACKAGE
           echo renamed...
           ls
-          apax publish --package ${{ env.PROJECT_NAME }}-$PACKAGE --registry https://npm.pkg.github.com
+          apax publish --package simatic-ax-$PACKAGE --registry https://npm.pkg.github.com
 
   # release:
   #   name: "Release binary"
