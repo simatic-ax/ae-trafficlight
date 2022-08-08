@@ -173,15 +173,18 @@ jobs:
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
           cd ./template         
           cd ..
-
+          echo debug ls 
+          ls 
       - name: "Download artifact with version"
         uses: actions/download-artifact@v3
         with:
           name: version      
 
-      - name: "create version" 
+      - name: "Read version" 
         run: |
+          echo debug ls 2
           ls
+          echo read version
           cat .version
           echo apax version "$(cat .version)" 
           apax version "$(cat .version)" 
