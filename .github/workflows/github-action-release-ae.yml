@@ -51,7 +51,7 @@ jobs:
         run: |
           apax version ${{ env.VERSION }}
           sudo chmod +x ./conventional-commit
-          ./conventional-commit -c "${{ github.event.head_commit.message }}" -v "${{ env.VERSION }}" >> .version
+          ./conventional-commit -c "fix(test): fix something" -v "${{ env.VERSION }}" >> .version
           cat .version
 
       - name: "Upload version"
@@ -60,48 +60,84 @@ jobs:
           name: version
           path: .version
 
-  build:
-    name: "Build apax library"
+  # build:
+  #   name: "Build apax library"
+  #   runs-on: ubuntu-latest
+  #   needs: versioning
+  #   steps:
+  #     - name: "Clone the library repository"
+  #       uses: actions/checkout@v3
+
+  #     - name: "Clone repository for CI workflows"
+  #       uses: actions/checkout@v3
+  #       with:
+  #         repository: ${{ env.ACTIONS_REPO }}
+  #         token: ${{ secrets.CI_KIT_TOKEN }}
+  #         path: ./actions
+
+  #     - name: "Install apax and dependencies"
+  #       uses: ./actions/.github/actions/setup-apax-runner
+  #       with:
+  #         apax-access-token: ${{ secrets.APAX_TOKEN }}
+
+  #     - name: "Login to the private repo"
+  #       run: |
+  #         apax login \
+  #         --registry "https://npm.pkg.github.com" \
+  #         --password ${{ secrets.CI_KIT_TOKEN }}
+
+  #     - name: "Build apax library"
+  #       uses: ./actions/.github/actions/apax-build
+  #       with:
+  #         library-directory: ${{ github.workspace }}
+  #         apax-access-token: ${{ secrets.APAX_TOKEN }}
+
+  #     - name: "Upload artifact"
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: library-artifact
+  #         path: bin/
+
+  # test:
+  #   name: "Test apax library"
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - name: "Clone the library repository"
+  #       uses: actions/checkout@v3
+
+  #     - name: "Clone repository for CI workflows"
+  #       uses: actions/checkout@v3
+  #       with:
+  #         repository: simatic-ax/actions
+  #         token: ${{ secrets.CI_KIT_TOKEN }}
+  #         path: ./actions
+
+  #     - name: "Install apax and dependencies"
+  #       uses: ./actions/.github/actions/setup-apax-runner
+  #       with:
+  #         apax-access-token: ${{ secrets.APAX_TOKEN }}
+
+  #     - name: "Login to the private repo"
+  #       run: |
+  #         apax login \
+  #         --registry "https://npm.pkg.github.com" \
+  #         --password ${{ secrets.CI_KIT_TOKEN }}
+
+  #     - name: "Build apax library"
+  #       uses: ./actions/.github/actions/apax-test
+  #       with:
+  #         library-directory: ${{ github.workspace }}
+  #         apax-access-token: ${{ secrets.APAX_TOKEN }}
+
+  #     - name: "Test apax package"
+  #       run: apax test
+
+  pack:
+    name: "Create template"
     runs-on: ubuntu-latest
     needs: versioning
-    steps:
-      - name: "Clone the library repository"
-        uses: actions/checkout@v3
 
-      - name: "Clone repository for CI workflows"
-        uses: actions/checkout@v3
-        with:
-          repository: ${{ env.ACTIONS_REPO }}
-          token: ${{ secrets.CI_KIT_TOKEN }}
-          path: ./actions
-
-      - name: "Install apax and dependencies"
-        uses: ./actions/.github/actions/setup-apax-runner
-        with:
-          apax-access-token: ${{ secrets.APAX_TOKEN }}
-
-      - name: "Login to the private repo"
-        run: |
-          apax login \
-          --registry "https://npm.pkg.github.com" \
-          --password ${{ secrets.CI_KIT_TOKEN }}
-
-      - name: "Build apax library"
-        uses: ./actions/.github/actions/apax-build
-        with:
-          library-directory: ${{ github.workspace }}
-          apax-access-token: ${{ secrets.APAX_TOKEN }}
-
-      - name: "Upload artifact"
-        uses: actions/upload-artifact@v3
-        with:
-          name: library-artifact
-          path: bin/
-
-  test:
-    name: "Test apax library"
-    runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: "Clone the library repository"
         uses: actions/checkout@v3
@@ -116,38 +152,28 @@ jobs:
       - name: "Install apax and dependencies"
         uses: ./actions/.github/actions/setup-apax-runner
         with:
-          apax-access-token: ${{ secrets.APAX_TOKEN }}
-
-      - name: "Login to the private repo"
-        run: |
-          apax login \
-          --registry "https://npm.pkg.github.com" \
-          --password ${{ secrets.CI_KIT_TOKEN }}
-
-      - name: "Build apax library"
-        uses: ./actions/.github/actions/apax-test
+          apax-access-token: ${{ secrets.APAX_TOKEN }}    
+      - name: "Download artifact"
+        uses: actions/download-artifact@v3
         with:
-          library-directory: ${{ github.workspace }}
-          apax-access-token: ${{ secrets.APAX_TOKEN }}
-
-      - name: "Test apax package"
-        run: apax test
-
-  pack:
-    name: "Create template"
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
+          name: version
       - name: "create an empty template workspace"
         run: |
-          md tmp
-          cd tmp
-          apax create template ${{ secrets.APAX_TOKEN }}
-          cp ../src ./template
-          cp ../Readme.md ./template
-          cat .version
-          apax version "$(cat .version)" 
+          apax login --password ${{ secrets.APAX_TOKEN }}
+          mkdir tmp
+          cd ./tmp
+          apax create template ${{ env.PROJECT_NAME }}
+          cd ./${{ env.PROJECT_NAME }}
+          echo ls 1
+          ls
+          echo ls 2
+          ls ./..
+          echo ls 3
+          ls ./../..
+          cp -r ./../../src ./template
+          cp ./../../Readme.md ./template
+          cat ./../../.version
+          apax version "$(cat ./../../.version)" 
           apax pack 2>.package.err 1>.signature
           PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
           apax publish --package $PACKAGE --registry https://npm.pkg.github.com
