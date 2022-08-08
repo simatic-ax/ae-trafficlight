@@ -164,19 +164,20 @@ jobs:
           --registry "https://npm.pkg.github.com" \
           --password ${{ secrets.CI_KIT_TOKEN }}
       
+      - name: "Clone the library repository"
+        uses: actions/checkout@v3      
+      
       - name: "Create an empty template workspace"
         run: |
           ls 
           echo Create tmp folder
           mkdir tmp
           cd ./tmp
-          echo create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
+          echo apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
           cd ./template
-      
-      - name: "Clone the library repository"
-        uses: actions/checkout@v3
+    
       
       - name: "create version" 
         run: |
