@@ -149,26 +149,32 @@ jobs:
         uses: ./actions/.github/actions/setup-apax-runner
         with:
           apax-access-token: ${{ secrets.APAX_TOKEN }}    
+      
       - name: "Download artifact"
         uses: actions/download-artifact@v3
         with:
           name: version      
+      
       - name: "Login to AX registry"
         run: apax login --password ${{ secrets.APAX_TOKEN }}
-      - name: "Login to the private repo"
+      
+      - name: "Login to GitHb registry"
         run: |
           apax login \
           --registry "https://npm.pkg.github.com" \
           --password ${{ secrets.CI_KIT_TOKEN }}
-      - name: "create an empty template workspace"
+      
+      - name: "Create an empty template workspace"
         run: |
           ls 
-          echo create tmp folder
+          echo Create tmp folder
           mkdir tmp
           cd ./tmp
+          echo create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
           cd ./template
+      
       - name: "Clone the library repository"
         uses: actions/checkout@v3
       
