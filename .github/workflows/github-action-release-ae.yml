@@ -185,20 +185,20 @@ jobs:
           cat .version
           echo debug ls this
           ls
-          echo ls ..
-          ls ..
-          echo ls ../..
-          ls ../..
-          echo read version
-          cat .version
-          echo apax version "$(cat .version)" 
-          apax version "$(cat .version)" 
-          apax pack 2>.package.err 1>.signature
+          # echo ls ..
+          # ls ..
+          # echo ls ../..
+          # ls ../..
+          # echo read version
+          # cat .version
+          # echo apax version "$(cat .version)" 
+          # apax version "$(cat .version)" 
+          # apax pack 2>.package.err 1>.signature
 
-          PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
-          echo package = $PACKAGE
-          ls
-          apax publish --package $PACKAGE --registry https://npm.pkg.github.com
+          # PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
+          # echo package = $PACKAGE
+          # ls
+          # apax publish --package $PACKAGE --registry https://npm.pkg.github.com
 
   # release:
   #   name: "Release binary"
