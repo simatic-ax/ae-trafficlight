@@ -194,6 +194,7 @@ jobs:
           # # ls
           # # apax publish --package $PACKAGE --registry https://npm.pkg.github.com
           cd .
+          ls
   # release:
   #   name: "Release binary"
   #   runs-on: ubuntu-latest
