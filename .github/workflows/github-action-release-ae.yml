@@ -178,14 +178,10 @@ jobs:
 
 
       - name: "Get the current version" 
-        run: 
-
-
-        
+        run:
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
           cd ./template
     
-      
       - name: "create version" 
         run: |
           cat ./../../.version
