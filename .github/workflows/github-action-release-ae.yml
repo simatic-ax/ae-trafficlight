@@ -153,7 +153,7 @@ jobs:
         uses: ./actions/.github/actions/setup-apax-runner
         with:
           apax-access-token: ${{ secrets.APAX_TOKEN }}    
-          
+
       - name: "create an empty template workspace"
         run: |
           mkdir tmp
@@ -161,6 +161,12 @@ jobs:
           cd ./${{ secrets.PROJECT_NAME }}
           apax create template ${{ secrets.PROJECT_NAME }}
           cd ./${{ secrets.PROJECT_NAME }}
+          echo ls 1
+          ls
+          echo ls 2
+          ls ./..
+          echo ls 3
+          ls ./../..
           cp -r ./../../src ./template
           cp ./../../Readme.md ./template
           cat ./../../.version
