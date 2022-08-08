@@ -150,11 +150,6 @@ jobs:
         with:
           apax-access-token: ${{ secrets.APAX_TOKEN }}    
       
-      - name: "Download artifact"
-        uses: actions/download-artifact@v3
-        with:
-          name: version      
-      
       - name: "Login to AX registry"
         run: apax login --password ${{ secrets.APAX_TOKEN }}
       
@@ -175,9 +170,17 @@ jobs:
           cd ./tmp
           echo apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
+
+      - name: "Get the current version from artifact 'version'"
+        uses: actions/download-artifact@v3
+        with:
+          name: version      
+
+      - name: "Select template folder and clone content to it"
+      - run:
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
           cd ./template
-    
+      - uses: actions/checkout@v3      
       
       - name: "create version" 
         run: |
