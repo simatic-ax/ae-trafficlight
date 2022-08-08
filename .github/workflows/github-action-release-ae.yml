@@ -156,6 +156,7 @@ jobs:
 
       - name: "create an empty template workspace"
         run: |
+          apax login --password ${{ secrets.APAX_TOKEN }}
           mkdir tmp
           cd ./tmp
           apax create template ${{ env.PROJECT_NAME }}
