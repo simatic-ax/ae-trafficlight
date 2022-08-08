@@ -158,7 +158,6 @@ jobs:
         run: |
           mkdir tmp
           cd ./tmp
-          cd ./${{ env.PROJECT_NAME }}
           apax create template ${{ env.PROJECT_NAME }}
           cd ./${{ env.PROJECT_NAME }}
           echo ls 1
