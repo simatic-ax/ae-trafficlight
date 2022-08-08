@@ -3,7 +3,7 @@ version: 0.0.0
 type: app
 targets:
   - "plcsim"
-  # - axunit-llvm
+  - axunit-llvm
 variables:
   APAX_BUILD_ARGS:
     - --debug
@@ -23,11 +23,11 @@ scripts:
     - apax build
     - apax load
 devDependencies:
-  "@ax/sdk": 1.0.175
+  "@ax/sdk": 2.0.3
   "@simatic-ax/snippetscollection": 0.0.13
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
 dependencies:
-  "@simatic-ax/statemachine": 0.1.0
+  "@simatic-ax/statemachine": 0.3.0
   "@simatic-ax/simple-control-modules": 0.1.0
-  "@simatic-ax/io": 0.1.2
+  "@simatic-ax/io": 1.0.0
