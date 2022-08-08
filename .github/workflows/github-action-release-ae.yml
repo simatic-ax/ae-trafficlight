@@ -182,6 +182,7 @@ jobs:
 
       - name: "Read version" 
         run: |
+          cat .version
           echo debug ls this
           ls
           echo ls ..
