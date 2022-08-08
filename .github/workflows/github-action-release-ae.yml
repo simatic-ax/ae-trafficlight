@@ -155,7 +155,12 @@ jobs:
       - name: "Download artifact"
         uses: actions/download-artifact@v3
         with:
-          name: version
+          name: version      
+      - name: "Login to the private repo"
+        run: |
+          apax login \
+          --registry "https://npm.pkg.github.com" \
+          --password ${{ secrets.CI_KIT_TOKEN }}
       - name: "create an empty template workspace"
         run: |
           apax login --password ${{ secrets.APAX_TOKEN }}
