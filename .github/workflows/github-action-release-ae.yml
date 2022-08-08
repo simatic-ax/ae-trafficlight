@@ -138,9 +138,6 @@ jobs:
     needs: versioning
 
     steps:
-      - name: "Clone the library repository"
-        uses: actions/checkout@v3
-
       - name: "Clone repository for CI workflows"
         uses: actions/checkout@v3
         with:
@@ -171,9 +168,12 @@ jobs:
           cd ./tmp
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
-          cp -r ./../../src ./template
-          cp ./../../Readme.md ./template
-          co ./../../apax.yml ./template
+          cd ./template
+      - name: "Clone the library repository"
+        uses: actions/checkout@v3
+      
+      - name: "create version" 
+        run: |
           cat ./../../.version
           apax version "$(cat ./../../.version)" 
           apax pack 2>.package.err 1>.signature
