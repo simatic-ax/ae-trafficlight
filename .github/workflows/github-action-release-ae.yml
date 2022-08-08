@@ -186,13 +186,13 @@ jobs:
           echo apax version "$(cat .version)" 
           # echo read version
           apax version "$(cat .version)" 
-          apax pack 2>.package.err 1>.signature
-          echo package created
-          ls
-          # PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
-          # echo package = $PACKAGE
+          # apax pack 2>.package.err 1>.signature
+          # echo package created
           # ls
-          # apax publish --package $PACKAGE --registry https://npm.pkg.github.com
+          # # PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
+          # # echo package = $PACKAGE
+          # # ls
+          # # apax publish --package $PACKAGE --registry https://npm.pkg.github.com
 
   # release:
   #   name: "Release binary"
