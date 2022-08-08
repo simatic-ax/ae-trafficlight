@@ -142,10 +142,12 @@ jobs:
       - name: "create an empty template workspace"
         run: |
           md tmp
-          cd tmp
-          apax create template ${{ secrets.APAX_TOKEN }}
-          cp ../src ./template
-          cp ../Readme.md ./template
+          cd ./tmp
+          cd ./${{ secrets.PROJECT_NAME }}
+          apax create template ${{ secrets.PROJECT_NAME }}
+          cd ./${{ secrets.PROJECT_NAME }}
+          cp -r ./../../src ./template
+          cp ./../../Readme.md ./template
           cat .version
           apax version "$(cat .version)" 
           apax pack 2>.package.err 1>.signature
