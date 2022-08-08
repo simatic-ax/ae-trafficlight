@@ -51,7 +51,7 @@ jobs:
         run: |
           apax version ${{ env.VERSION }}
           sudo chmod +x ./conventional-commit
-          ./conventional-commit -c "${{ github.event.head_commit.message }}" -v "${{ env.VERSION }}" >> .version
+          ./conventional-commit -c "fix(test): fix something" -v "${{ env.VERSION }}" >> .version
           cat .version
 
       - name: "Upload version"
