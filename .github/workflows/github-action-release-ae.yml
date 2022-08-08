@@ -153,7 +153,10 @@ jobs:
         uses: ./actions/.github/actions/setup-apax-runner
         with:
           apax-access-token: ${{ secrets.APAX_TOKEN }}    
-
+      - name: "Download artifact"
+        uses: actions/download-artifact@v3
+        with:
+          name: version
       - name: "create an empty template workspace"
         run: |
           apax login --password ${{ secrets.APAX_TOKEN }}
