@@ -5,7 +5,7 @@ name: release-package
 #       - release
 on:
   repository_dispatch:
-  
+    types: [on-demand-test]
 env:
   PROJECT_NAME: ae-trafficlight
   SCOPE: simatic-ax
