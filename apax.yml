@@ -3,7 +3,7 @@ version: 0.0.0
 type: app
 targets:
   - "plcsim"
-  # - axunit-llvm
+  - axunit-llvm
 variables:
   APAX_BUILD_ARGS:
     - --debug
