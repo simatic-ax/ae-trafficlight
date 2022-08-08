@@ -184,9 +184,9 @@ jobs:
         run: |
           cat .version
           echo apax version "$(cat .version)" 
-          # echo read version
+          echo read version
           apax version "$(cat .version)" 
-          apax pack 2>.package.err 1>.signature
+          # apax pack 2>.package.err 1>.signature
           # echo package created
           # ls
           # # PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
