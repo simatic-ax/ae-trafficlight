@@ -162,7 +162,7 @@ jobs:
           mkdir tmp
           cd ./tmp
           apax create template "@simatic-ax/${{ env.PROJECT_NAME }}"
-          cd ./${{ env.PROJECT_NAME }}
+          cd ./simatic-ax-${{ env.PROJECT_NAME }}
           echo ls 12
           ls
           echo ls 2
