@@ -21,6 +21,15 @@ CONFIGURATION MyConfiguration
         ActiveStateName : STRING;
 
         // Initial State
+
+
+        g1 : TimeOutGuard;
+        g0 : TimeOutGuard;
+        g2 : TimeOutGuard;
+        g3 : AndGuard := (lhs := g1, rhs := g2);
+        g4 : AndGuard := (lhs := g3, rhs := g0);
+
+
         InitGuard : TRUEGUARD; //TimeoutGuard := (Timeout := T#3000ms);
         Init2Red : Transition := (Guard := InitGuard, NextState := RedState);
         InitState : StateInit := (StateName := 'Init', Transition1 := Init2Red, LightStack := REF(TrafficLight));
