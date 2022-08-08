@@ -165,10 +165,8 @@ jobs:
           --password ${{ secrets.CI_KIT_TOKEN }}
       - name: "create an empty template workspace"
         run: |
-          echo test 1
-          cd ..
-          ls
-          echo test 2
+          ls 
+          echo create tmp folder
           mkdir tmp
           cd ./tmp
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
