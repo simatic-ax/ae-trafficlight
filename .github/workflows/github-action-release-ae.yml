@@ -178,6 +178,7 @@ jobs:
           PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
           echo $PACKAGE
           mv $PACKAGE simatic-ax-$PACKAGE
+          echo renamed...
           ls
           PACKAGE2="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
           echo new package $PACKAGE2
