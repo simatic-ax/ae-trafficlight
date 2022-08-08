@@ -181,6 +181,7 @@ jobs:
       - name: "create version" 
         run: |
           cat .version
+          echo apax version "$(cat .version)" 
           apax version "$(cat .version)" 
           apax pack 2>.package.err 1>.signature
 
