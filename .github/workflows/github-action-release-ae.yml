@@ -166,8 +166,8 @@ jobs:
           apax login --password ${{ secrets.APAX_TOKEN }}
           mkdir tmp
           cd ./tmp
-          apax create template "@simatic-ax/${{ env.PROJECT_NAME }}"
-          cd ./simatic-ax-${{ env.PROJECT_NAME }}
+          apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
+          cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
           echo ls 12
           ls
           echo ls 2
@@ -181,11 +181,9 @@ jobs:
           apax pack 2>.package.err 1>.signature
 
           PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
-          echo $PACKAGE
-          mv $PACKAGE simatic-ax-$PACKAGE
-          echo renamed...
+          echo package = $PACKAGE
           ls
-          apax publish --package simatic-ax-$PACKAGE --registry https://npm.pkg.github.com
+          apax publish --package simatic-ax-template-$PACKAGE --registry https://npm.pkg.github.com
 
   # release:
   #   name: "Release binary"
