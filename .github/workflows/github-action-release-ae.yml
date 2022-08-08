@@ -180,6 +180,7 @@ jobs:
 
       - name: "create version" 
         run: |
+          ls
           cat .version
           echo apax version "$(cat .version)" 
           apax version "$(cat .version)" 
