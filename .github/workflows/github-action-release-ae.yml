@@ -193,7 +193,7 @@ jobs:
           # # echo package = $PACKAGE
           # # ls
           # # apax publish --package $PACKAGE --registry https://npm.pkg.github.com
-
+          cd .
   # release:
   #   name: "Release binary"
   #   runs-on: ubuntu-latest
