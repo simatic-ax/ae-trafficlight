@@ -183,7 +183,7 @@ jobs:
           PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
           echo package = $PACKAGE
           ls
-          apax publish --package simatic-ax-template-$PACKAGE --registry https://npm.pkg.github.com
+          apax publish --package $PACKAGE --registry https://npm.pkg.github.com
 
   # release:
   #   name: "Release binary"
