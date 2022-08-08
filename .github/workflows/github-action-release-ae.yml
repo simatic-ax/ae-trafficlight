@@ -184,9 +184,9 @@ jobs:
         run: |
           cat .version
           echo debug ls this
-          ls
-          # echo ls ..
-          # ls ..
+          # ls
+          echo ls ..
+          ls ..
           # echo ls ../..
           # ls ../..
           # echo read version
