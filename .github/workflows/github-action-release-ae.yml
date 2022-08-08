@@ -180,7 +180,9 @@ jobs:
       - run:
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
           cd ./template
-      - uses: actions/checkout@v3      
+      
+      - name: "Clone repo to template folder"
+        uses: actions/checkout@v3      
       
       - name: "create version" 
         run: |
