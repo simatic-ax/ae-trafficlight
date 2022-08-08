@@ -180,7 +180,7 @@ jobs:
           mv $PACKAGE simatic-ax-$PACKAGE
           ls
           PACKAGE2="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
-          echo $PACKAGE2
+          echo new package $PACKAGE2
           apax publish --package $PACKAGE2 --registry https://npm.pkg.github.com
 
   # release:
