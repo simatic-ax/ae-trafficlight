@@ -164,18 +164,16 @@ jobs:
       - name: "create an empty template workspace"
         run: |
           apax login --password ${{ secrets.APAX_TOKEN }}
+          cd ..
+          ls
+          
           mkdir tmp
           cd ./tmp
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
-          echo ls 12
-          ls
-          echo ls 2
-          ls ./..
-          echo ls 3
-          ls ./../..
           cp -r ./../../src ./template
           cp ./../../Readme.md ./template
+          co ./../../apax.yml ./template
           cat ./../../.version
           apax version "$(cat ./../../.version)" 
           apax pack 2>.package.err 1>.signature
