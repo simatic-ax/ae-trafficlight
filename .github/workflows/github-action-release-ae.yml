@@ -139,6 +139,21 @@ jobs:
     needs: versioning
 
     steps:
+      - name: "Clone the library repository"
+        uses: actions/checkout@v3
+
+      - name: "Clone repository for CI workflows"
+        uses: actions/checkout@v3
+        with:
+          repository: simatic-ax/actions
+          token: ${{ secrets.CI_KIT_TOKEN }}
+          path: ./actions
+
+      - name: "Install apax and dependencies"
+        uses: ./actions/.github/actions/setup-apax-runner
+        with:
+          apax-access-token: ${{ secrets.APAX_TOKEN }}    
+          
       - name: "create an empty template workspace"
         run: |
           mkdir tmp
