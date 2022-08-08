@@ -187,8 +187,8 @@ jobs:
           # ls
           # echo ls ..
           # ls ..
-          echo ls ../..
-          ls ../..
+          echo ls ../../..
+          ls ../../..
           # echo read version
           # cat .version
           # echo apax version "$(cat .version)" 
