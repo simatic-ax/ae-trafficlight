@@ -182,9 +182,12 @@ jobs:
 
       - name: "Read version" 
         run: |
-          echo debug ls 2
-          cd tmp
+          echo debug ls this
           ls
+          echo ls ..
+          ls ..
+          echo ls ../..
+          ls ../..
           echo read version
           cat .version
           echo apax version "$(cat .version)" 
