@@ -183,15 +183,8 @@ jobs:
       - name: "Read version" 
         run: |
           cat .version
-          echo debug ls this
-          # ls
-          # echo ls ..
-          # ls ..
-          echo ls ../../..
-          ls ../../..
+          echo apax version "$(cat .version)" 
           # echo read version
-          # cat .version
-          # echo apax version "$(cat .version)" 
           # apax version "$(cat .version)" 
           # apax pack 2>.package.err 1>.signature
 
