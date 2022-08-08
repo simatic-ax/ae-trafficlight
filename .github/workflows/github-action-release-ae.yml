@@ -3,9 +3,7 @@ name: release-package
 #   push:
 #     branches:
 #       - release
-on:
-  repository_dispatch:
-    types: [on-demand-test]
+on: workflow_dispatch
 env:
   PROJECT_NAME: ae-trafficlight
   SCOPE: simatic-ax
