@@ -156,6 +156,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: version      
+      - name: "Login to AX registry"
+        run: apax login --password ${{ secrets.APAX_TOKEN }}
       - name: "Login to the private repo"
         run: |
           apax login \
@@ -163,10 +165,10 @@ jobs:
           --password ${{ secrets.CI_KIT_TOKEN }}
       - name: "create an empty template workspace"
         run: |
-          apax login --password ${{ secrets.APAX_TOKEN }}
+          echo test 1
           cd ..
           ls
-          
+          echo test 2
           mkdir tmp
           cd ./tmp
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
