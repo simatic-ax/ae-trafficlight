@@ -170,7 +170,11 @@ jobs:
           cd ./tmp
           echo apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
+          echo 888
+          ls after create
           cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
+          echo 99999
+          ls after change
       - name: "Download artifact with version"
         uses: actions/download-artifact@v3
         with:
