@@ -178,7 +178,9 @@ jobs:
           PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
           echo $PACKAGE
           mv $PACKAGE simatic-ax-$PACKAGE
+          ls
           PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
+          echo $PACKAGE
           apax publish --package $PACKAGE --registry https://npm.pkg.github.com
 
   # release:
