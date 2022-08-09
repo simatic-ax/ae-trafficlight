@@ -27,7 +27,7 @@ jobs:
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.CI_KIT_TOKEN }}" >> .npmrc
           echo "always-auth = true" >> .npmrc
           cat .npmrc
-          echo "VERSION=$(npm show @${{ env.SCOPE }}/${{ env.PROJECT_NAME }} version --registry=https://npm.pkg.github.com --scope=${{ env.SCOPE }})" >> $GITHUB_ENV
+          echo "VERSION=$(npm show @${{ env.SCOPE }}/template-${{ env.PROJECT_NAME }} version --registry=https://npm.pkg.github.com --scope=${{ env.SCOPE }})" >> $GITHUB_ENV
           echo $VERSION
       - name: "Check contents of actions folder"
         run: tree -d ./actions
