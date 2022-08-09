@@ -137,25 +137,12 @@ jobs:
     # needs: versioning
 
     steps:
-      - name: "List Repo"
-        run: ls
-
-      # - name: "Create a template folder"
-      #   run: |
-      #     ls
-      #     mkdir template
-      #     cd template 
-
-
       - name: "Clone private AX github actions"
         uses: actions/checkout@v3
         with:
           repository: simatic-ax/actions
           token: ${{ secrets.CI_KIT_TOKEN }}
           path: ./actions
-
-      - name: "List Repo"
-        run: ls
 
       - name: "Install apax and dependencies"
         uses: ./actions/.github/actions/setup-apax-runner
@@ -170,7 +157,19 @@ jobs:
           apax login \
           --registry "https://npm.pkg.github.com" \
           --password ${{ secrets.CI_KIT_TOKEN }}
-      
+
+      - name: "Download artifact with version"
+        uses: actions/download-artifact@v3
+        with:
+          name: version  
+
+      - name: "Read version" 
+        run: |
+          VERSION=$(cat .version)
+          echo my version is: $VERSION
+          echo apax version "$(cat .version)" 
+          
+
       - name: "Create an empty template"
         run: |
           mkdir simatic-ax-${{ env.PROJECT_NAME }}
@@ -201,10 +200,7 @@ jobs:
       #     cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
       #     echo 99999
       #     ls
-      # - name: "Download artifact with version"
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: version      
+
       
       - name: "List Repo"
         run: ls
