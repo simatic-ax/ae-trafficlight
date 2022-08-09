@@ -11,53 +11,53 @@ env:
   VERSIONING_TOOL_REPO: simatic-ax/simatic_versioning
 
 jobs:
-  versioning:
-    name: "Bump the version of the package according to the conventional commit"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Clone the library repository"
-        uses: actions/checkout@v3
-      - name: "Clone repository for CI workflows"
-        uses: actions/checkout@v3
-        with:
-          repository: ${{ env.ACTIONS_REPO }}
-          token: ${{ secrets.CI_KIT_TOKEN }}
-          path: ./actions
-      - name: "Get the latest version of the package"
-        run: |
-          echo "@simatic-ax:registry=https://npm.pkg.github.com/" >> .npmrc
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.CI_KIT_TOKEN }}" >> .npmrc
-          echo "always-auth = true" >> .npmrc
-          cat .npmrc
-          echo "VERSION=$(npm show @${{ env.SCOPE }}/${{ env.PROJECT_NAME }} version --registry=https://npm.pkg.github.com --scope=${{ env.SCOPE }})" >> $GITHUB_ENV
-          echo $VERSION
-      - name: "Check contents of actions folder"
-        run: tree -d ./actions
-      - name: "Install apax and dependencies"
-        uses: ./actions/.github/actions/setup-apax-runner
-        with:
-          apax-access-token: ${{ secrets.APAX_TOKEN }}
+  # versioning:
+  #   name: "Bump the version of the package according to the conventional commit"
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: "Clone the library repository"
+  #       uses: actions/checkout@v3
+  #     - name: "Clone repository for CI workflows"
+  #       uses: actions/checkout@v3
+  #       with:
+  #         repository: ${{ env.ACTIONS_REPO }}
+  #         token: ${{ secrets.CI_KIT_TOKEN }}
+  #         path: ./actions
+  #     - name: "Get the latest version of the package"
+  #       run: |
+  #         echo "@simatic-ax:registry=https://npm.pkg.github.com/" >> .npmrc
+  #         echo "//npm.pkg.github.com/:_authToken=${{ secrets.CI_KIT_TOKEN }}" >> .npmrc
+  #         echo "always-auth = true" >> .npmrc
+  #         cat .npmrc
+  #         echo "VERSION=$(npm show @${{ env.SCOPE }}/${{ env.PROJECT_NAME }} version --registry=https://npm.pkg.github.com --scope=${{ env.SCOPE }})" >> $GITHUB_ENV
+  #         echo $VERSION
+  #     - name: "Check contents of actions folder"
+  #       run: tree -d ./actions
+  #     - name: "Install apax and dependencies"
+  #       uses: ./actions/.github/actions/setup-apax-runner
+  #       with:
+  #         apax-access-token: ${{ secrets.APAX_TOKEN }}
 
-      - name: "Get latest simatic-versioning executable"
-        uses: dsaltares/fetch-gh-release-asset@master
-        with:
-          repo: ${{ env.VERSIONING_TOOL_REPO }}
-          file: "conventional-commit"
-          token: ${{ secrets.CI_KIT_TOKEN }}
+  #     - name: "Get latest simatic-versioning executable"
+  #       uses: dsaltares/fetch-gh-release-asset@master
+  #       with:
+  #         repo: ${{ env.VERSIONING_TOOL_REPO }}
+  #         file: "conventional-commit"
+  #         token: ${{ secrets.CI_KIT_TOKEN }}
 
-      - id: bump
-        name: "Bump version"
-        run: |
-          apax version ${{ env.VERSION }}
-          sudo chmod +x ./conventional-commit
-          ./conventional-commit -c "fix(test): fix something" -v "${{ env.VERSION }}" >> .version
-          cat .version
+  #     - id: bump
+  #       name: "Bump version"
+  #       run: |
+  #         apax version ${{ env.VERSION }}
+  #         sudo chmod +x ./conventional-commit
+  #         ./conventional-commit -c "fix(test): fix something" -v "${{ env.VERSION }}" >> .version
+  #         cat .version
 
-      - name: "Upload version"
-        uses: actions/upload-artifact@v3
-        with:
-          name: version
-          path: .version
+  #     - name: "Upload version"
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: version
+  #         path: .version
 
   # build:
   #   name: "Build apax library"
@@ -140,14 +140,21 @@ jobs:
       - name: "List Repo"
         run: ls
 
+
+      - name: copy complete repo to a template folder
+        run: |
+          ls
+          mkdir template
+          cd template 
+
       - name: "Clone the library repository"
         uses: actions/checkout@v3      
 
-      - name: copy complete repo to a template folder
-        run: mv ./* ./template 
-
       - name: "List Repo"
-        run: ls
+        run: |
+          ls
+          cd ..
+          ls 
 
       - name: "Clone repository for CI workflows"
         uses: actions/checkout@v3
