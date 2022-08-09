@@ -144,7 +144,7 @@ jobs:
         uses: actions/checkout@v3      
 
       - name: copy complete repo to a template folder
-        run: mv . ./template 
+        run: mv ./* ./template 
 
       - name: "List Repo"
         run: ls
