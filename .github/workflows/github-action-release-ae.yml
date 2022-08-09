@@ -134,7 +134,7 @@ jobs:
   pack:
     name: "Create template"
     runs-on: ubuntu-latest
-    needs: versioning
+    # needs: versioning
 
     steps:
       - name: "List Repo"
