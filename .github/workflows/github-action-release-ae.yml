@@ -141,6 +141,9 @@ jobs:
       - name: "List Repo"
         run: ls
 
+      - name: "Clone the library repository"
+        uses: actions/checkout@v3      
+
       - name: "Clone repository for CI workflows"
         uses: actions/checkout@v3
         with:
@@ -164,9 +167,6 @@ jobs:
           apax login \
           --registry "https://npm.pkg.github.com" \
           --password ${{ secrets.CI_KIT_TOKEN }}
-      
-      # - name: "Clone the library repository"
-      #   uses: actions/checkout@v3      
       
       - name: "List Repo"
         run: ls
