@@ -183,10 +183,12 @@ jobs:
 
       - name: "Pack"
         run: |
-          ls
           cd ./simatic-ax-${{ env.PROJECT_NAME }}
+          echo show the content of directory
           ls
-          apax pack 2>.package.err 1>.signature
+          cat apax.yml
+          apax pack
+          # apax pack 2>.package.err 1>.signature
           ls
       
       - name: "Publish"
