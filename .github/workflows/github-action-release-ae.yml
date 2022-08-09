@@ -173,9 +173,12 @@ jobs:
       
       - name: "Create an empty template"
         run: |
-          mkdir tmp
-          cd tmp
-          apax create template "'@simatic-ax/template-${{ env.PROJECT_NAME }}'"
+          mkdir simatic-ax-${{ env.PROJECT_NAME }}
+          cd simatic-ax-${{ env.PROJECT_NAME }}
+          mkdir template
+          echo name: "@simatic-ax/${{ env.PROJECT_NAME }}" >> apax.yml
+          echo version: 0.0.0 >> apax.yml
+          echo type: generic
           cd ..
           ls
           ls simatic-ax-template
