@@ -15,8 +15,6 @@ jobs:
     name: "Bump the version of the package according to the conventional commit"
     runs-on: ubuntu-latest
     steps:
-      - name: "Clone the library repository"
-        uses: actions/checkout@v3
       - name: "Clone repository for CI workflows"
         uses: actions/checkout@v3
         with:
@@ -33,10 +31,6 @@ jobs:
           echo $VERSION
       - name: "Check contents of actions folder"
         run: tree -d ./actions
-      # - name: "Install apax and dependencies"
-      #   uses: ./actions/.github/actions/setup-apax-runner
-      #   with:
-      #     apax-access-token: ${{ secrets.APAX_TOKEN }}
 
       - name: "Get latest simatic-versioning executable"
         uses: dsaltares/fetch-gh-release-asset@master
@@ -51,7 +45,6 @@ jobs:
           sudo chmod +x ./conventional-commit
           ./conventional-commit -c "fix(test): fix something" -v "${{ env.VERSION }}" >> .version
           cat .version
-        # apax version ${{ env.VERSION }}
 
       - name: "Upload version"
         uses: actions/upload-artifact@v3
@@ -184,12 +177,8 @@ jobs:
       - name: "Pack"
         run: |
           cd ./simatic-ax-${{ env.PROJECT_NAME }}
-          echo show the content of directory
-          ls
           cat apax.yml
-          apax pack
-          # apax pack 2>.package.err 1>.signature
-          ls
+          apax pack 2>.package.err 1>.signature
       
       - name: "Publish"
         run: |
@@ -197,61 +186,3 @@ jobs:
           echo publishing package to https://npm.pkg.github.com
           PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
           apax publish --package $PACKAGE --registry https://npm.pkg.github.com
-      # - name: "Read version" 
-      #   run: |
-      #     cat .version
-      #     echo apax version "$(cat .version)" 
-      #     echo read version
-      #     apax version "$(cat .version)" 
-      #     # apax pack 2>.package.err 1>.signature
-      #     # echo package created
-      #     # ls
-      #     # # PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
-      #     # # echo package = $PACKAGE
-      #     # # ls
-      #     # # apax publish --package $PACKAGE --registry https://npm.pkg.github.com
-      #     cd ../..
-      #     ls
-  # release:
-  #   name: "Release binary"
-  #   runs-on: ubuntu-latest
-  #   needs: pack
-  #   steps:
-  #     - name: "Clone the library repository"
-  #       uses: actions/checkout@v3
-
-  #     - name: "Clone repository for CI workflows"
-  #       uses: actions/checkout@v3
-  #       with:
-  #         repository: simatic-ax/actions
-  #         token: ${{ secrets.CI_KIT_TOKEN }}
-  #         path: ./actions
-
-  #     - name: "Install apax and dependencies"
-  #       uses: ./actions/.github/actions/setup-apax-runner
-  #       with:
-  #         apax-access-token: ${{ secrets.APAX_TOKEN }}
-
-  #     - name: "Download artifact"
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: library-artifact
-
-  #     - name: "Login to the private repo"
-  #       run: |
-  #         apax login \
-  #         --registry "https://npm.pkg.github.com" \
-  #         --password ${{ secrets.CI_KIT_TOKEN }}
-
-  #     - name: "Download artifact"
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: version
-
-  #     - name: "Pack and publish the library"
-  #       run: |
-  #         cat .version
-  #         apax version "$(cat .version)"
-  #         apax pack 2>.package.err 1>.signature
-  #         PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
-  #         apax publish --package $PACKAGE --registry https://npm.pkg.github.com
