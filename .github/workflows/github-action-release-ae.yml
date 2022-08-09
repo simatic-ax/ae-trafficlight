@@ -146,16 +146,8 @@ jobs:
       #     mkdir template
       #     cd template 
 
-      - name: "Clone the library repository into the template folder"
-        uses: actions/checkout@v3      
-        with:
-          path: ./template
 
-      - name: "Return to root"
-        run: |
-          ls 
-
-      - name: "Clone repository for CI workflows"
+      - name: "Clone private AX github actions"
         uses: actions/checkout@v3
         with:
           repository: simatic-ax/actions
@@ -179,16 +171,24 @@ jobs:
           --registry "https://npm.pkg.github.com" \
           --password ${{ secrets.CI_KIT_TOKEN }}
       
-      - name: "List Repo"
-        run: ls
+      - name: "Create an empty template workspace"
+        run: |
+          echo apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
+          ls
+          ls simatic-ax-template
+          ls simatic-ax-template/template
 
-      # - name: "Create an empty template workspace"
-      #   run: |
-      #     ls 
+      # - name: "Clone the library repository into the template folder"
+      #   uses: actions/checkout@v3      
+      #   with:
+      #     path: ./simatic-ax-template/template
+
+
+
       #     echo Create tmp folder
       #     mkdir tmp
       #     cd ./tmp
-      #     echo apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
+      #     
       #     apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
       #     echo 888
       #     ls
