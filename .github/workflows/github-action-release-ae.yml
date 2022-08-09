@@ -167,8 +167,6 @@ jobs:
         run: |
           VERSION=$(cat .version)
           echo my version is: $VERSION
-          echo apax version "$(cat .version)" 
-          
 
       - name: "Create an empty template"
         run: |
@@ -176,17 +174,17 @@ jobs:
           cd simatic-ax-${{ env.PROJECT_NAME }}
           mkdir template
           echo name: "@simatic-ax/template-${{ env.PROJECT_NAME }}" >> apax.yml
-          echo version: 0.0.0 >> apax.yml
+          echo version: $VERSION >> apax.yml
           echo type: generic >> apax.yml
           cat apax.yml
           cd ..
           ls
           ls simatic-ax-${{ env.PROJECT_NAME }}
 
-      # - name: "Clone the library repository into the template folder"
-      #   uses: actions/checkout@v3      
-      #   with:
-      #     path: ./simatic-ax-template/template
+      - name: "Clone the library repository into the template folder"
+        uses: actions/checkout@v3      
+        with:
+          path: ./simatic-ax-${{ env.PROJECT_NAME }}/template
 
 
 
