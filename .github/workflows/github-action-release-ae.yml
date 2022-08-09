@@ -131,7 +131,6 @@ jobs:
 
   #     - name: "Test apax package"
   #       run: apax test
-
   pack:
     name: "Create template"
     runs-on: ubuntu-latest
@@ -143,6 +142,12 @@ jobs:
 
       - name: "Clone the library repository"
         uses: actions/checkout@v3      
+
+      - name: copy complete repo to a template folder
+        run: mv . ./template 
+
+      - name: "List Repo"
+        run: ls
 
       - name: "Clone repository for CI workflows"
         uses: actions/checkout@v3
