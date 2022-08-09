@@ -140,7 +140,7 @@ jobs:
     steps:
       - name: "Clone the library repository"
         uses: actions/checkout@v3      
-        
+
       - name: "List Repo"
         run: ls
 
@@ -208,11 +208,8 @@ jobs:
           # # echo package = $PACKAGE
           # # ls
           # # apax publish --package $PACKAGE --registry https://npm.pkg.github.com
-          cd ..
+          cd ../..
           ls
-
-      - name: "Clone the library repository"
-        uses: actions/checkout@v3   
   # release:
   #   name: "Release binary"
   #   runs-on: ubuntu-latest
