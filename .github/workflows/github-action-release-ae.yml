@@ -185,6 +185,7 @@ jobs:
         run: |
           ls
           cd ./simatic-ax-${{ env.PROJECT_NAME }}
+          ls
           apax pack 2>.package.err 1>.signature
           ls
       
