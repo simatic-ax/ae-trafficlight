@@ -174,8 +174,6 @@ jobs:
           echo type: generic >> apax.yml
           cat apax.yml
           cd ..
-          ls
-          ls simatic-ax-${{ env.PROJECT_NAME }}
 
       - name: "Clone the library repository into the template folder"
         uses: actions/checkout@v3      
@@ -183,22 +181,19 @@ jobs:
           path: ./simatic-ax-${{ env.PROJECT_NAME }}/template
 
 
-
-      #     echo Create tmp folder
-      #     mkdir tmp
-      #     cd ./tmp
-      #     
-      #     apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
-      #     echo 888
-      #     ls
-      #     cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
-      #     echo 99999
-      #     ls
-
+      - name: "Pack"
+        run: |
+          ls
+          cd ./simatic-ax-${{ env.PROJECT_NAME }}
+          apax pack 2>.package.err 1>.signature
+          ls
       
-      - name: "List Repo"
-        run: ls
-      
+      - name: "Publish"
+        run: |
+          ls
+          echo publishing package to https://npm.pkg.github.com
+          PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
+          apax publish --package $PACKAGE --registry https://npm.pkg.github.com
       # - name: "Read version" 
       #   run: |
       #     cat .version
