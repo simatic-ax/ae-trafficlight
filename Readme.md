@@ -7,18 +7,18 @@ This application example shows how to use the state framework of the package `@s
 ![statechart](doc/state.png)
 
 ## Execute the Application Example (AX Code local)
-1. Open a CLI and switch to the target folder like:
-      ```cli
+1. Open a command line interface (CLI) and switch to the target folder like:
+      ```sh
       D:
       cd \Git
       ```
-1. Clone the repository and open `AX Code`
+1. Install the application example `AX Code`
 
-1. 
-      ```
-      git clone git@github.com:simatic-ax/ae-trafficlight.git
+      Run the following commands in a CLI
+      ```sh
+      apax create @simatic-ax/ae-trafficlight --registry https://npm.pkg.github.com ae-trafficlight
       cd ae-trafficlight 
-      AxCode .
+      axcode .
       ```
 
 1. If not open, open a terminal (`CTRL+SHIFT+ö`)
