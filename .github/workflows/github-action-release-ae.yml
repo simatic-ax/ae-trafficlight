@@ -163,16 +163,12 @@ jobs:
         with:
           name: version  
 
-      - name: "Read version" 
-        run: |
-          VERSION=$(cat .version)
-          echo my version is: $VERSION
-
       - name: "Create an empty template"
         run: |
           mkdir simatic-ax-${{ env.PROJECT_NAME }}
           cd simatic-ax-${{ env.PROJECT_NAME }}
           mkdir template
+          VERSION=$(cat ../.version)
           echo name: "@simatic-ax/template-${{ env.PROJECT_NAME }}" >> apax.yml
           echo version: $VERSION >> apax.yml
           echo type: generic >> apax.yml
