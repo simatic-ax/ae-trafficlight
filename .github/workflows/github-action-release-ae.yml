@@ -138,9 +138,6 @@ jobs:
     needs: versioning
 
     steps:
-      - name: "Clone the library repository"
-        uses: actions/checkout@v3      
-
       - name: "List Repo"
         run: ls
 
@@ -174,23 +171,23 @@ jobs:
       - name: "List Repo"
         run: ls
 
-      - name: "Create an empty template workspace"
-        run: |
-          ls 
-          echo Create tmp folder
-          mkdir tmp
-          cd ./tmp
-          echo apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
-          apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
-          echo 888
-          ls
-          cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
-          echo 99999
-          ls
-      - name: "Download artifact with version"
-        uses: actions/download-artifact@v3
-        with:
-          name: version      
+      # - name: "Create an empty template workspace"
+      #   run: |
+      #     ls 
+      #     echo Create tmp folder
+      #     mkdir tmp
+      #     cd ./tmp
+      #     echo apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
+      #     apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
+      #     echo 888
+      #     ls
+      #     cd ./simatic-ax-template-${{ env.PROJECT_NAME }}
+      #     echo 99999
+      #     ls
+      # - name: "Download artifact with version"
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: version      
       
       - name: "List Repo"
         run: ls
