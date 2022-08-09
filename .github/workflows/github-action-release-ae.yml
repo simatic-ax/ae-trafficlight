@@ -140,20 +140,20 @@ jobs:
       - name: "List Repo"
         run: ls
 
-      - name: "copy complete repo to a template folder"
-        run: |
-          ls
-          mkdir template
-          cd template 
-
-      - name: "Clone the library repository"
-        uses: actions/checkout@v3      
-
-      # - name: "List Repo"
+      # - name: "Create a template folder"
       #   run: |
       #     ls
-      #     cd ..
-      #     ls 
+      #     mkdir template
+      #     cd template 
+
+      - name: "Clone the library repository into the template folder"
+        uses: actions/checkout@v3      
+        with:
+          path: ./template
+
+      - name: "Return to root"
+        run: |
+          ls 
 
       - name: "Clone repository for CI workflows"
         uses: actions/checkout@v3
