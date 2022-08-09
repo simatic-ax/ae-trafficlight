@@ -169,6 +169,9 @@ jobs:
       - name: "Clone the library repository"
         uses: actions/checkout@v3      
       
+      - name: "List Repo"
+        run: ls
+
       - name: "Create an empty template workspace"
         run: |
           ls 
@@ -186,7 +189,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: version      
-
+      
+      - name: "List Repo"
+        run: ls
+      
       - name: "Read version" 
         run: |
           cat .version
