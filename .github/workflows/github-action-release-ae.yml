@@ -182,7 +182,7 @@ jobs:
       
       - name: "Publish"
         run: |
-          ls
           echo publishing package to https://npm.pkg.github.com
+          cd ./simatic-ax-${{ env.PROJECT_NAME }}
           PACKAGE="$(grep -oP '(?<=\").+.apax\.tgz(?=\")' .package.err)"
           apax publish --package $PACKAGE --registry https://npm.pkg.github.com
