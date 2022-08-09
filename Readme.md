@@ -12,7 +12,7 @@ This application example shows how to use the state framework of the package `@s
       D:
       cd \Git
       ```
-1. Install the application example `AX Code`
+1. Install the application example on your local PC
 
       Run the following commands in a CLI
       ```sh
