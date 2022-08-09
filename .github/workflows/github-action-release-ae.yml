@@ -171,10 +171,13 @@ jobs:
           --registry "https://npm.pkg.github.com" \
           --password ${{ secrets.CI_KIT_TOKEN }}
       
-      - name: "Create an empty template workspace"
+      - name: "Create an empty template"
         run: |
+          mkdir tmp
+          cd tmp
           echo apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
           apax create template "@simatic-ax/template-${{ env.PROJECT_NAME }}"
+          cd ..
           ls
           ls simatic-ax-template
           ls simatic-ax-template/template
