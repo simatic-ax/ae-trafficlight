@@ -1,5 +1,5 @@
 name: ae-trafficlight
-version: 0.0.0
+version: 0.0.0-placeholder
 type: app
 targets:
   - "plcsim"
