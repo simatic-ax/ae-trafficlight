@@ -93,15 +93,18 @@ jobs:
           cat apax.yml
           cd ..
 
-      - name: "Set the version in the application example"
-        run: |
-          cd simatic-ax-${{ env.PROJECT_NAME }}/template
-          apax version $(cat ../../.version)
-
       - name: "Clone the library repository into the template folder"
         uses: actions/checkout@v3      
         with:
           path: ./simatic-ax-${{ env.PROJECT_NAME }}/template
+
+      - name: "Set the version in the application example"
+        run: |
+          cd simatic-ax-${{ env.PROJECT_NAME }}/template
+          echo update apax.yml in template
+          VERSION=$(cat ../../.version)
+          echo version: $VERSION
+          apax version $VERSION
 
       - name: "Pack"
         run: |
