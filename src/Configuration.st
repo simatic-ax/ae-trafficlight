@@ -6,30 +6,28 @@ CONFIGURATION MyConfiguration
     TASK Main(Priority := 1);
     
     PROGRAM P1 WITH Main: MainProgram;
-        
+    
+    // Configuring IO tags
     VAR_GLOBAL
-        
-        StateController : StateController := (InitialState := InitState);
+        QRd AT %Q0.0 : BOOL;
+        QYe AT %Q0.1 : BOOL;
+        QGn AT %Q0.2 : BOOL;
+    END_VAR
+
+
+    // Configuring the global equipment 
+    VAR_GLOBAL
         TrafficLight : LightStackRdYeGnBl := (QRed := QRed, QYellow := QYellow, QGreen := QGreen);
         QRed : BinOutput;
         QYellow : BinOutput;
         QGreen : BinOutput;
-
-        QRd AT %Q0.0 : BOOL;
-        QYe AT %Q0.1 : BOOL;
-        QGn AT %Q0.2 : BOOL;
         ActiveStateName : STRING;
+    END_VAR
 
+    // Configuring the state machine
+    VAR_GLOBAL
+        StateController : StateController := (InitialState := InitState);
         // Initial State
-
-
-        g1 : TimeOutGuard;
-        g0 : TimeOutGuard;
-        g2 : TimeOutGuard;
-        g3 : AndGuard := (lhs := g1, rhs := g2);
-        g4 : AndGuard := (lhs := g3, rhs := g0);
-
-
         InitGuard : TRUEGUARD; //TimeoutGuard := (Timeout := T#3000ms);
         Init2Red : Transition := (Guard := InitGuard, NextState := RedState);
         InitState : StateInit := (StateName := 'Init', Transition1 := Init2Red, LightStack := REF(TrafficLight));
