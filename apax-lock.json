@@ -536,11 +536,12 @@
     }
   },
   "@simatic-ax/simple-control-modules": {
-    "version": "0.1.0",
-    "resolved": "https://npm.pkg.github.com/download/@simatic-ax/simple-control-modules/0.1.0/5790f5e9822898a36fad6337a01575e2f47d95a2a315456015363c9abebad0b2",
-    "integrity": "sha512-y6K0240zSX8/9Purjoi2kI3YDq+OkihgXuzKjDU552T82XkbMoySe4mDpNV8hC+LSmmTtVOxlz9rY48zopIeuA==",
+    "version": "1.0.0",
+    "resolved": "https://npm.pkg.github.com/download/@simatic-ax/simple-control-modules/1.0.0/4ced20b1a8aebf119b778fbdc53d320128d54c7d",
+    "integrity": "sha512-3mdIYYrSad3ehntygvzhDMrAa8+/RfwTApixTUBnLpFAb6KzdFNwVOGTvJhn0PIIx1dG3ZP7hv24YeM/28FAsg==",
     "dependencies": {
-      "@simatic-ax/io": "0.1.2"
+      "@ax/system-timer": "2.0.1",
+      "@simatic-ax/io": "1.0.0"
     }
   },
   "@simatic-ax/snippetscollection": {
