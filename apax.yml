@@ -1,16 +1,20 @@
+# General information
 name: ae-trafficlight
 version: 0.0.0-placeholder
 type: app
+# Description will be displayed in the apax extension
+description: Application example for using the state machine library
 targets:
   - "plcsim"
   - axunit-llvm
+# Environment variables
 variables:
   APAX_BUILD_ARGS:
     - --debug
-    - --log Trace
   BIN_FOLDER: "./bin/plcsim"
   IP_ADDRESS: "192.168.0.1"
   WATCHLISTS: "./watchlist"
+# Apax scripts
 scripts:
   load: sld -i $BIN_FOLDER -t $IP_ADDRESS -r --accept-security-disclaimer -l debug
     --default-server-interface
@@ -22,12 +26,14 @@ scripts:
   dlsim:
     - apax build
     - apax load
+# Dependencies
 devDependencies:
-  "@ax/sdk": 2.0.3
-  "@simatic-ax/snippetscollection": 0.0.13
+  "@ax/sdk": 3.0.2
+  "@simatic-ax/snippetscollection": 0.0.15
+dependencies:
+  "@simatic-ax/statemachine": 2.0.1
+  "@simatic-ax/simple-control-modules": 1.0.0
+  "@simatic-ax/io": 1.0.1
+# Registries from where the packages will be loaded
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
-dependencies:
-  "@simatic-ax/statemachine": 0.3.0
-  "@simatic-ax/simple-control-modules": 1.0.0
-  "@simatic-ax/io": 1.0.0
