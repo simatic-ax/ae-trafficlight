@@ -1,4 +1,4 @@
-# Application Example Traffic Light 
+# Application Example Traffic Light
 
 ## Description
 
@@ -7,14 +7,18 @@ This application example shows how to use the state framework of the package `@s
 ![statechart](doc/state.png)
 
 ## Execute the Application Example (AX Code local)
+
 1. Open a command line interface (CLI) and switch to the target folder like:
+
       ```sh
       D:
       cd \Git
       ```
+
 1. Install the application example on your local PC
 
       Run the following commands in a CLI
+
       ```sh
       apax create @simatic-ax/ae-trafficlight --registry https://npm.pkg.github.com ae-trafficlight
       cd ae-trafficlight 
@@ -22,26 +26,27 @@ This application example shows how to use the state framework of the package `@s
       ```
 
 1. If not open, open a terminal (`CTRL+SHIFT+ö`)
-   
+
 1. Start a PLCSIM Advanced Instance (IP: Address 192.168.0.1). To change the IP you'll find information [here](#tips-and-tricks)
 
 1. Install dependencies
-   
+
    ```cli
    apax install -L
    ```
+
 1. Build in download the project to the PLC
-   
+
    ```cli
    apax dlsim
    ```
-   
+
    The project will be compiled and downloaded to the PLCSIM Advanced instance
-   
+
 1. Open the monitoring file mon.mon
 
 1. Go online
- 
+
 ## Tips and tricks
 
 ### Change the IP address for the downloader
