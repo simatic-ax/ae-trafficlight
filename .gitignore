@@ -4,3 +4,5 @@ bin
 obj
 tmp
 apax-lock.json
+TestResult
+*.tgz
