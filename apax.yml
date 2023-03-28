@@ -28,11 +28,11 @@ scripts:
     - apax load
 # Dependencies
 devDependencies:
-  "@ax/sdk": 3.0.2
+  "@ax/sdk": 3.0.12
   "@simatic-ax/snippetscollection": 0.0.15
 dependencies:
-  "@simatic-ax/statemachine": 2.0.1
-  "@simatic-ax/simple-control-modules": 1.0.0
+  "@simatic-ax/statemachine": 2.1.1
+  "@simatic-ax/simple-control-modules": 2.0.0
   "@simatic-ax/io": 1.0.1
 # Registries from where the packages will be loaded
 registries:

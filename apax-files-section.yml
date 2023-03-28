@@ -1,0 +1,13 @@
+# this files section will be used for the github workflow
+# the apax.yml will be created dynamically in the workflow - also the files section
+# here you can define the content
+
+files:
+  - template
+  - '!**/.git'
+  - '!**/.vscode'
+  - '!**/.github'
+  - '!**/.gitattributes'
+  - '!**/.markdownlint.yml'
+  - '!template/CODEOWNERS'
+  - '!template/apax-files-section.yml'
