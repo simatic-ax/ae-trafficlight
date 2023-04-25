@@ -29,6 +29,8 @@ This application example shows how to use the state framework of the package `@s
 
 1. Start a PLCSIM Advanced Instance (IP: Address 192.168.0.1). To change the IP you'll find information [here](#tips-and-tricks)
 
+1. If not done, download a valid hardware configuration (FW >= 2.9 and IP address 192.168.0.1) to the PLCSIM Advanced Instance. The recommend way is using TIA Portal.
+
 1. Install dependencies
 
    ```cli
