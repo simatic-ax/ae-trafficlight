@@ -19,10 +19,27 @@ This application example shows how to use the state framework of the package `@s
 
       Run the following commands in a CLI
 
+      if you use apax `V1.2.0`
       ```sh
       apax create @simatic-ax/ae-trafficlight --registry https://npm.pkg.github.com ae-trafficlight
-      cd ae-trafficlight 
-      axcode .
+      ```
+
+      if you use apax `V1.3.0`
+      
+      ```sh
+      apax create @simatic-ax/template-ae-trafficlight --registry https://npm.pkg.github.com ae-trafficlight
+      ```
+      
+      Open `AxCode` with
+      
+      ```sh
+      axcode ae-trafficlight 
+      ```
+      
+      and install the dependencies with:
+      
+      ```sh
+      apax install -L
       ```
 
 1. If not open, open a terminal (`CTRL+SHIFT+ö`)
