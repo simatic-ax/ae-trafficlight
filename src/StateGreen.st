@@ -4,7 +4,7 @@ USING Simatic.Ax.SimpleControlModules;
 NAMESPACE ApplicationStateFramwerok
     CLASS StateGreen EXTENDS State1Transition
 
-        VAR  PUBLIC
+        VAR PUBLIC
             LightStack : REF_TO LightStackRdYeGnBl;
         END_VAR
 
