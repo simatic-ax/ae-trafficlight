@@ -6,7 +6,7 @@ type: app
 description: Application example for using the state machine library
 targets:
   - "plcsim"
-  - axunit-llvm
+  - "llvm"
 # Environment variables
 variables:
   APAX_BUILD_ARGS:
@@ -16,13 +16,10 @@ variables:
   WATCHLISTS: "./watchlist"
 # Apax scripts
 scripts:
-  load: sld -i $BIN_FOLDER -t $IP_ADDRESS -r --accept-security-disclaimer -l debug
-    --default-server-interface
-  reset: apax hwld --resetPlc:keepOnlyIP --targetIP $IP_ADDRESS
-    --accept-security-disclaimer
-  loadhwcn: apax hwld --input ./hwcn/MMC --targetIP $IP_ADDRESS
-    --accept-security-disclaimer
-  watch: apax mon  -t $IP_ADDRESS -f ./watchfiles/mon.mon -c
+  # call 'apax load' to download the builded program to the target. An 'apax build' might be required upfront
+  load: apax sld load --input $BIN_FOLDER --target $IP_ADDRESS --restart
+    --accept-security-disclaimer --log debug
+  # call 'apax dlsim' to build and download the application to the target
   dlsim:
     - apax build
     - apax load
