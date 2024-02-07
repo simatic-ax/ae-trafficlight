@@ -28,12 +28,15 @@ scripts:
     - apax load
 # Dependencies
 devDependencies:
-  "@ax/sdk": 3.0.18
-  "@simatic-ax/snippetscollection": 0.0.15
+  "@ax/sdk": 2311.0.1
+  "@simatic-ax/snippetscollection": 1.0.0
 dependencies:
-  "@simatic-ax/statemachine": 2.1.1
-  "@simatic-ax/simple-control-modules": 2.0.0
-  "@simatic-ax/io": 1.0.1
+  "@simatic-ax/statemachine": 5.0.0
+  "@simatic-ax/simple-control-modules": 5.0.1
+  "@simatic-ax/io": 5.0.0
+  "@ax/system-timer": 6.0.94
 # Registries from where the packages will be loaded
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
+installStrategy: strict
+apaxVersion: 3.1.0
