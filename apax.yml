@@ -6,7 +6,7 @@ type: app
 description: Application example for using the state machine library
 targets:
   - "plcsim"
-  - axunit-llvm
+  - "llvm"
 # Environment variables
 variables:
   APAX_BUILD_ARGS:
@@ -16,24 +16,24 @@ variables:
   WATCHLISTS: "./watchlist"
 # Apax scripts
 scripts:
-  load: sld -i $BIN_FOLDER -t $IP_ADDRESS -r --accept-security-disclaimer -l debug
-    --default-server-interface
-  reset: apax hwld --resetPlc:keepOnlyIP --targetIP $IP_ADDRESS
-    --accept-security-disclaimer
-  loadhwcn: apax hwld --input ./hwcn/MMC --targetIP $IP_ADDRESS
-    --accept-security-disclaimer
-  watch: apax mon  -t $IP_ADDRESS -f ./watchfiles/mon.mon -c
+  # call 'apax load' to download the builded program to the target. An 'apax build' might be required upfront
+  load: apax sld load --input $BIN_FOLDER --target $IP_ADDRESS --restart
+    --accept-security-disclaimer --log debug
+  # call 'apax dlsim' to build and download the application to the target
   dlsim:
     - apax build
     - apax load
 # Dependencies
 devDependencies:
-  "@ax/sdk": 3.0.18
-  "@simatic-ax/snippetscollection": 0.0.15
+  "@ax/sdk": 2311.0.1
+  "@simatic-ax/snippetscollection": 1.0.0
 dependencies:
-  "@simatic-ax/statemachine": 2.1.1
-  "@simatic-ax/simple-control-modules": 2.0.0
-  "@simatic-ax/io": 1.0.1
+  "@simatic-ax/statemachine": 5.0.0
+  "@simatic-ax/simple-control-modules": 5.0.1
+  "@simatic-ax/io": 5.0.0
+  "@ax/system-timer": 6.0.94
 # Registries from where the packages will be loaded
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
+installStrategy: strict
+apaxVersion: 3.1.0
