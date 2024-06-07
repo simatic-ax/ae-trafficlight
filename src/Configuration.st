@@ -39,17 +39,17 @@ CONFIGURATION MyConfiguration
 
         // State RedYellow
         RedYellowGuard : TimeoutGuard := (Timeout := T#1500ms);
-        RedYellowToGreen : Transition := (Guard := RedGuard, NextState := GreenState);
+        RedYellowToGreen : Transition := (Guard := RedYellowGuard, NextState := GreenState);
         RedYellowState : StateRedYellow := (StateName := 'RedYellow', Transition1 := RedYellowToGreen, LightStack := REF(TrafficLight));
         
         // State Green
-        Green : TimeoutGuard := (Timeout := T#1500ms);
-        Green2Yellow : Transition := (Guard := RedGuard, NextState := YellowState);
+        GreenGuard : TimeoutGuard := (Timeout := T#1500ms);
+        Green2Yellow : Transition := (Guard := GreenGuard, NextState := YellowState);
         GreenState : StateGreen := (StateName := 'Green', Transition1 := Green2Yellow, LightStack := REF(TrafficLight));
 
         // State Yellow
         YellowGuard : TimeoutGuard := (Timeout := T#1500ms);
-        Yellow2Count : Transition := (Guard := RedGuard, NextState := CycleCountState);
+        Yellow2Count : Transition := (Guard := YellowGuard, NextState := CycleCountState);
         YellowState : StateYellow := (StateName := 'Yellow', Transition1 := Yellow2Count, LightStack := REF(TrafficLight));
 
         // Check Cycles
