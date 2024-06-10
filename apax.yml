@@ -25,7 +25,7 @@ scripts:
     - apax load
 # Dependencies
 devDependencies:
-  "@ax/sdk": 2311.0.1
+  "@ax/sdk": 2405.0.0
   "@simatic-ax/snippetscollection": 1.0.0
 dependencies:
   "@simatic-ax/statemachine": 5.0.0
