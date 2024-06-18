@@ -6,7 +6,7 @@ type: app
 description: Application example for using the state machine library
 # Build targets
 targets:
-  - "plcsim"
+  - "1500"
   - "llvm"
 
 # Registries from where the packages will be loaded
@@ -29,7 +29,7 @@ dependencies:
 variables:
   APAX_BUILD_ARGS:
     - --debug
-  BIN_FOLDER: "./bin/plcsim"
+  BIN_FOLDER: "./bin/1500"
   IP_ADDRESS: "192.168.0.1"
   WATCHLISTS: "./watchlist"
 
@@ -37,7 +37,7 @@ variables:
 scripts:
   # call 'apax load' to download the builded program to the target. An 'apax build' might be required upfront
   load: apax sld load --input $BIN_FOLDER --target $IP_ADDRESS --restart --accept-security-disclaimer --log debug
-  # call 'apax dlsim' to build and download the application to the target
-  dlsim:
+  # call 'apax dlplc' to build and download the application to the target
+  dlplc:
     - apax build
     - apax load
