@@ -4,36 +4,40 @@ version: 0.0.0-placeholder
 type: app
 # Description will be displayed in the apax extension
 description: Application example for using the state machine library
+# Build targets
 targets:
   - "plcsim"
   - "llvm"
-# Environment variables
+
+# Registries from where the packages will be loaded
+registries:
+  '@simatic-ax': 'https://npm.pkg.github.com/'
+# Install Setting
+installStrategy: strict
+apaxVersion: 3.2.1
+# Dependencies
+devDependencies:
+  "@ax/sdk": 2405.0.0
+  "@simatic-ax/snippetscollection": 1.0.0
+dependencies:
+  "@simatic-ax/statemachine": 6.0.0
+  "@simatic-ax/simple-control-modules": 6.0.0
+  "@simatic-ax/io": 6.0.0
+  "@ax/system-timer": 7.0.17
+
+# Project variables
 variables:
   APAX_BUILD_ARGS:
     - --debug
   BIN_FOLDER: "./bin/plcsim"
   IP_ADDRESS: "192.168.0.1"
   WATCHLISTS: "./watchlist"
+
 # Apax scripts
 scripts:
   # call 'apax load' to download the builded program to the target. An 'apax build' might be required upfront
-  load: apax sld load --input $BIN_FOLDER --target $IP_ADDRESS --restart
-    --accept-security-disclaimer --log debug
+  load: apax sld load --input $BIN_FOLDER --target $IP_ADDRESS --restart --accept-security-disclaimer --log debug
   # call 'apax dlsim' to build and download the application to the target
   dlsim:
     - apax build
     - apax load
-# Dependencies
-devDependencies:
-  "@ax/sdk": 2311.0.1
-  "@simatic-ax/snippetscollection": 1.0.0
-dependencies:
-  "@simatic-ax/statemachine": 5.0.0
-  "@simatic-ax/simple-control-modules": 5.0.1
-  "@simatic-ax/io": 5.0.0
-  "@ax/system-timer": 6.0.94
-# Registries from where the packages will be loaded
-registries:
-  '@simatic-ax': 'https://npm.pkg.github.com/'
-installStrategy: strict
-apaxVersion: 3.1.0
