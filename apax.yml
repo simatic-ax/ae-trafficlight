@@ -1,5 +1,5 @@
 # General information
-name: ae-trafficlight
+name: '@simatic-ax/ae-trafficlight'
 version: 0.0.0-placeholder
 type: app
 # Description will be displayed in the apax extension

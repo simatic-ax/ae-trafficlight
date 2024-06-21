@@ -1,0 +1,158 @@
+{
+  "$schema": "./schema.json",
+  "version": 2,
+  "axioms": {
+    "linguist": "language",
+    "licensee": "license",
+    "packagers": "packager"
+  },
+  "rules": {
+    "license-file-exists": {
+      "level": "error",
+      "rule": {
+        "type": "file-existence",
+        "options": {
+          "globsAny": [ "LICENSE.md" ],
+          "nocase": true
+        }
+      }
+    },
+    "readme-file-exists": {
+      "level": "error",
+      "rule": {
+        "type": "file-existence",
+        "options": {
+          "globsAny": [ "README*.md" ],
+          "nocase": true
+        }
+      }
+    },
+    "readme-references-license": {
+      "level": "error",
+      "rule": {
+        "type": "file-contents",
+        "options": {
+          "globsAll": [ "README*" ],
+          "content": "license",
+          "flags": "i"
+        }
+      }
+    },
+    "binaries-not-present": {
+      "level": "warning",
+      "rule": {
+        "type": "file-type-exclusion",
+        "options": {
+          "type": [ "**/*.exe", "**/*.dll", "!node_modules/**" ]
+        }
+      }
+    },
+    "test-directory-exists": {
+      "level": "warning",
+      "rule": {
+        "type": "directory-existence",
+        "options": {
+          "globsAny": [ "**/test*" ],
+          "nocase": true
+        }
+      }
+    },
+    "source-directory-exists": {
+      "level": "warning",
+      "rule": {
+        "type": "directory-existence",
+        "options": {
+          "globsAny": [ "**/src*" ],
+          "nocase": true
+        }
+      }
+    },
+    "additional-docs-directory-exists": {
+      "level": "warning",
+      "rule": {
+        "type": "directory-existence",
+        "options": {
+          "globsAny": [ "**/docs*" ],
+          "nocase": true
+        }
+      }
+    },
+    "integrates-with-ci": {
+      "level": "error",
+      "rule": {
+        "type": "file-existence",
+        "options": {
+          "globsAny": [
+            ".github/workflows/*"
+          ]
+        }
+      }
+    },
+    "markdownlint-config-exit": {
+      "level": "error",
+      "rule": {
+        "type": "file-existence",
+        "options": {
+          "globsAny": [
+            ".markdownlint.yml"
+          ]
+        }
+      }
+    },
+    "apax-yml-exit": {
+      "level": "error",
+      "rule": {
+        "type": "file-existence",
+        "options": {
+          "globsAny": [
+            "apax.yml"
+          ]
+        }
+      }
+    },
+    "gitignore-exit": {
+      "level": "error",
+      "rule": {
+        "type": "file-existence",
+        "options": {
+          "globsAny": [
+            ".gitignore"
+          ]
+        }
+      }
+    },
+    "gitattributes-exit": {
+      "level": "error",
+      "rule": {
+        "type": "file-existence",
+        "options": {
+          "globsAny": [
+            ".gitattributes"
+          ]
+        }
+      }
+    },
+    "apax-files-section-exit": {
+      "level": "error",
+      "rule": {
+        "type": "file-existence",
+        "options": {
+          "globsAny": [
+            "apax-files-section.yml"
+          ]
+        }
+      }
+    },
+    "CODEOWNERS-exit": {
+      "level": "error",
+      "rule": {
+        "type": "file-existence",
+        "options": {
+          "globsAny": [
+            "CODEOWNERS"
+          ]
+        }
+      }
+    }
+  }
+}
