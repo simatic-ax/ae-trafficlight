@@ -40,7 +40,7 @@ This application example shows how to use the state framework of the package `@s
       and install the dependencies with:
 
       ```sh
-      apax install -L
+      apax install
       ```
 
 1. If not open, open a terminal (`CTRL+SHIFT+ö`)
@@ -52,7 +52,7 @@ This application example shows how to use the state framework of the package `@s
 1. Install dependencies
 
    ```cli
-   apax install -L
+   apax install
    ```
 
 1. Build in download the project to the PLC
