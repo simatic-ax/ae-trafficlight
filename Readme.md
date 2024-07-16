@@ -28,7 +28,7 @@ This application example shows how to use the state framework of the package `@s
       ```sh
       cd ae-trafficlight 
       ```
-      
+
       install the dependencies with:
 
       ```sh
@@ -36,7 +36,7 @@ This application example shows how to use the state framework of the package `@s
       ```
 
       and open AxCode
-   
+
       ```sh
       axcode . 
       ```
