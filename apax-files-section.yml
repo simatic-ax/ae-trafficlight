@@ -5,7 +5,6 @@
 files:
   - template
   - '!**/.git'
-  - '!**/.vscode'
   - '!**/.github'
   - '!**/.gitattributes'
   - '!**/.markdownlint.yml'
