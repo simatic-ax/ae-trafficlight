@@ -50,7 +50,7 @@ This application example shows how to use the state framework of the package `@s
 1. Build in download the project to the PLC
 
    ```cli
-   apax dlsim
+   apax dlplc
    ```
 
    The project will be compiled and downloaded to the PLCSIM Advanced instance
