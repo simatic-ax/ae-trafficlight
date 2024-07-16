@@ -8,39 +8,37 @@ This application example shows how to use the state framework of the package `@s
 
 ## Execute the Application Example (AX Code local)
 
-1. Open a command line interface (CLI) and switch to the target folder like:
+1. Open a command line interface (CLI) and switch to the target folder. Example, if the traget folder is D:\temp
 
       ```sh
       D:
-      cd \Git
+      cd \temp
       ```
 
 1. Install the application example on your local PC
 
       Run the following commands in a CLI
 
-      if you use apax `V1.2.0`
-
       ```sh
       apax create @simatic-ax/ae-trafficlight --registry https://npm.pkg.github.com ae-trafficlight
-      ```
-
-      if you use apax `V1.3.0`
-
-      ```sh
-      apax create @simatic-ax/template-ae-trafficlight --registry https://npm.pkg.github.com ae-trafficlight
       ```
 
       Open `AxCode` with
 
       ```sh
-      axcode ae-trafficlight 
+      cd ae-trafficlight 
       ```
-
-      and install the dependencies with:
+      
+      install the dependencies with:
 
       ```sh
       apax install
+      ```
+
+      and open AxCode
+   
+      ```sh
+      axcode . 
       ```
 
 1. If not open, open a terminal (`CTRL+SHIFT+ö`)
@@ -48,12 +46,6 @@ This application example shows how to use the state framework of the package `@s
 1. Start a PLCSIM Advanced Instance (IP: Address 192.168.0.1). To change the IP you'll find information [here](#tips-and-tricks)
 
 1. If not done, download a valid hardware configuration (FW >= 2.9 and IP address 192.168.0.1) to the PLCSIM Advanced Instance. The recommend way is using TIA Portal.
-
-1. Install dependencies
-
-   ```cli
-   apax install
-   ```
 
 1. Build in download the project to the PLC
 
