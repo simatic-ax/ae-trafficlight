@@ -20,3 +20,5 @@ PROGRAM MainProgram
     QGn := TrafficLight.GetState(Colors#Green);
     ActiveStateName := StateController.GetActiveStateName();
 END_PROGRAM
+
+// test
