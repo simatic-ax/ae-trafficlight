@@ -21,4 +21,4 @@ PROGRAM MainProgram
     ActiveStateName := StateController.GetActiveStateName();
 END_PROGRAM
 
-// test 5
+// test 6
