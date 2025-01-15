@@ -17,13 +17,13 @@ installStrategy: strict
 apaxVersion: 3.2.1
 # Dependencies
 devDependencies:
-  "@ax/sdk": 2405.0.0
+  "@ax/sdk": 2405.3.0
   "@simatic-ax/snippetscollection": 1.0.0
 dependencies:
   "@simatic-ax/statemachine": 6.0.0
   "@simatic-ax/simple-control-modules": 6.0.0
   "@simatic-ax/io": 6.0.0
-  "@ax/system-timer": 7.0.17
+  "@ax/system-timer": 7.1.47
 
 # Project variables
 variables:
