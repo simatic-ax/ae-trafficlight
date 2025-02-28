@@ -17,7 +17,7 @@ installStrategy: strict
 apaxVersion: 3.2.1
 # Dependencies
 devDependencies:
-  "@ax/sdk": 2405.0.0
+  "@ax/sdk": 2411.1.0
   "@simatic-ax/snippetscollection": 1.0.0
 dependencies:
   "@simatic-ax/statemachine": 6.0.0
