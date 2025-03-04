@@ -23,7 +23,7 @@ dependencies:
   "@simatic-ax/statemachine": 6.0.0
   "@simatic-ax/simple-control-modules": 6.0.0
   "@simatic-ax/io": 6.0.0
-  "@ax/system-timer": 7.0.17
+  "@ax/system-timer": 8.0.8
 
 # Project variables
 variables:
