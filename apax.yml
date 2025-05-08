@@ -12,18 +12,15 @@ targets:
 # Registries from where the packages will be loaded
 registries:
   '@simatic-ax': 'https://npm.pkg.github.com/'
-# Install Setting
-installStrategy: strict
-apaxVersion: 3.2.1
 # Dependencies
 devDependencies:
-  "@ax/sdk": 2405.0.0
-  "@simatic-ax/snippetscollection": 1.0.0
+  "@ax/sdk": ^2504.0.0
+  "@simatic-ax/snippetscollection": ^1.0.0
 dependencies:
-  "@simatic-ax/statemachine": 6.0.0
-  "@simatic-ax/simple-control-modules": 6.0.0
-  "@simatic-ax/io": 6.0.0
-  "@ax/system-timer": 7.0.17
+  "@simatic-ax/statemachine": ^8.0.0
+  "@simatic-ax/simple-control-modules": ^8.0.0
+  "@simatic-ax/io": ^9.0.0
+  "@ax/system-timer": ^10.0.24
 
 # Project variables
 variables:
@@ -41,13 +38,3 @@ scripts:
   dlplc:
     - apax build
     - apax load
-
-files:
-  - doc
-  - src
-  - test
-  - watchlist
-  - apax-lock.json
-  - apax.yml
-  - README.md
-  - LICENSE.md

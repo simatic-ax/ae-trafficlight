@@ -1,0 +1,60 @@
+# This workflow is going to be used during the development phase of the project
+name: Application development workflow
+
+on:
+  push:
+    branches:
+      - 'main'  # runs the workflow, once new changes have been integrated to main
+  pull_request:
+  workflow_call:
+    secrets:
+      APAX_TOKEN:
+        required: true
+    inputs:
+      ref:
+        required: true
+        type: string
+
+permissions:
+  contents: read     # required for checkout
+  packages: read     # required for pulling the container
+  actions: write     # required for artifact uploading
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/simatic-ax/ci-images/apax-ci-image:3.5.0
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps: 
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref != '' && inputs.ref || github.ref }}
+
+      - name: Login to required registries
+        uses: simatic-ax/actions/apax-login@v3
+        with:
+          apax-token: ${{ secrets.APAX_TOKEN }}
+          registries: |
+            https://npm.pkg.github.com/,${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        uses: simatic-ax/actions/apax-install@v3
+        with:
+          immutable: true
+
+      - name: Build source code
+        uses: simatic-ax/actions/apax-build@v3
+
+      - name: Test source code
+        uses: simatic-ax/actions/apax-test@v3
+
+      - name: Check links
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          check-modified-files-only: 'yes'
+          base-branch: 'main'
