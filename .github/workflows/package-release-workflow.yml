@@ -48,7 +48,7 @@ jobs:
           version: ${{ github.event.release.tag_name }}
 
       - name: Navigate to working directory
-        run: cd ${{ github.repository }}-template
+        run: cd working-directory
 
       - name: Version package
         uses: simatic-ax/actions/apax-version@v3
