@@ -11,6 +11,8 @@ permissions:
   packages: write    # required for pulling the container
   actions: write     # required for artifact uploading
 
+env:
+  TEMPLATE_PATH: working-directory
 jobs:
   call-development:
     name: Build the package
@@ -47,18 +49,17 @@ jobs:
         with:
           version: ${{ github.event.release.tag_name }}
 
-      - name: Navigate to working directory
-        run: cd working-directory
-
       - name: Version package
         uses: simatic-ax/actions/apax-version@v3
         with:
           version: ${{ github.event.release.tag_name }}
+          path: ${{ env.TEMPLATE_PATH }}
 
       - name: Pack the template
         uses: simatic-ax/actions/apax-pack@v3
         with:
           key: ${{ secrets.APAX_SIGNKEY }}
+          path: ${{ env.TEMPLATE_PATH }}
 
       - name: Login to required registries
         uses: simatic-ax/actions/apax-login@v3
@@ -73,3 +74,4 @@ jobs:
           registries: |
             https://npm.pkg.github.com
           tag: latest
+          path: ${{ env.TEMPLATE_PATH }}
