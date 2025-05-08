@@ -58,12 +58,3 @@ jobs:
         with:
           check-modified-files-only: 'yes'
           base-branch: 'main'
-
-      - name: Upload build artifacts
-        if: ${{ github.event_name == 'workflow_call' || github.event_name == 'release'}}
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts
-          path: bin
-          retention-days: 90
-          if-no-files-found: error
