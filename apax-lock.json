@@ -7,14 +7,17 @@
     "name": "@simatic-ax/ae-trafficlight",
     "version": "0.0.0-placeholder",
     "dependencies": {
-      "@simatic-ax/statemachine": "^8.0.0",
-      "@simatic-ax/simple-control-modules": "^8.0.0",
-      "@simatic-ax/io": "^9.0.0",
-      "@ax/system-timer": "^10.0.24"
+      "@simatic-ax/statemachine": "8.0.0",
+      "@simatic-ax/simple-control-modules": "8.0.0",
+      "@simatic-ax/io": "9.0.0",
+      "@ax/system-timer": "10.0.24"
     },
     "devDependencies": {
-      "@ax/sdk": "^2504.0.0",
-      "@simatic-ax/snippetscollection": "^1.0.0"
+      "@ax/sdk": "2504.0.0",
+      "@simatic-ax/snippetscollection": "1.0.0"
+    },
+    "catalogs": {
+      "@ax/simatic-ax": "2504.0.0"
     }
   },
   "packages": {
@@ -48,6 +51,13 @@
         "@ax/target-mc7plus": "10.0.85",
         "@ax/trace": "2.9.0"
       }
+    },
+    "@ax/system-timer": {
+      "name": "@ax/system-timer",
+      "version": "10.0.24",
+      "integrity": "sha512-n2ZW2Mbh+f5IHW7+yWgHGR8ddFtq7Px73rGZg/Iypvl2sfP8QZ4fz++M7rQGW+Jvk2w4NPjY1JqieLrpas27Lw==",
+      "resolved": "https://registry.simatic-ax.siemens.io/@ax/system-timer/-/system-timer-10.0.24.tgz",
+      "dependencies": {}
     },
     "@simatic-ax/snippetscollection": {
       "name": "@simatic-ax/snippetscollection",
@@ -84,13 +94,6 @@
         "@ax/system-math": "^10.0.24",
         "@ax/system-timer": "^10.0.24"
       }
-    },
-    "@ax/system-timer": {
-      "name": "@ax/system-timer",
-      "version": "10.0.24",
-      "integrity": "sha512-n2ZW2Mbh+f5IHW7+yWgHGR8ddFtq7Px73rGZg/Iypvl2sfP8QZ4fz++M7rQGW+Jvk2w4NPjY1JqieLrpas27Lw==",
-      "resolved": "https://registry.simatic-ax.siemens.io/@ax/system-timer/-/system-timer-10.0.24.tgz",
-      "dependencies": {}
     },
     "@ax/apax-build": {
       "name": "@ax/apax-build",
@@ -724,5 +727,86 @@
       "dependencies": {}
     }
   },
-  "workspaces": {}
+  "workspaces": {},
+  "catalogs": {
+    "@ax/simatic-ax": {
+      "name": "@ax/simatic-ax",
+      "version": "2504.0.0",
+      "integrity": "sha512-eN/1a893Pm8y0RL9/fdeCi8wFrpUrGQ8AiEpD6C/nBbUu9BT2LthySN2x9Fp8fLirhZV+SnHU3GVvQiLgIutBw==",
+      "resolved": "https://registry.simatic-ax.siemens.io/@ax/simatic-ax/-/simatic-ax-2504.0.0.tgz",
+      "dependencies": {},
+      "catalogDependencies": {
+        "@ax/stc": "10.0.85",
+        "@ax/target-mc7plus": "10.0.85",
+        "@ax/target-llvm": "10.0.85",
+        "@ax/st-ls": "10.0.85",
+        "@ax/apax-build": "2.0.20",
+        "@ax/build-native": "16.1.17",
+        "@ax/axunitst": "8.0.33",
+        "@ax/axunitst-ls-contrib": "8.0.33",
+        "@ax/axunitst-library": "8.0.33",
+        "@ax/axunit-mocking": "8.0.33",
+        "@ax/sld": "3.2.4",
+        "@ax/plc-control": "1.2.50",
+        "@ax/mod": "1.7.6",
+        "@ax/mon": "1.7.6",
+        "@ax/sdb": "1.7.6",
+        "@ax/trace": "2.9.0",
+        "@ax/diagnostic-buffer": "1.3.2",
+        "@ax/certificate-management": "1.2.0",
+        "@ax/hardware-diagnostics": "0.3.0",
+        "@ax/simatic-1500-clocks": "10.0.6",
+        "@ax/simatic-1500-communication": "10.0.0",
+        "@ax/simatic-1500-diagnostics-hardware": "10.0.0",
+        "@ax/simatic-1500-distributedio": "10.0.1",
+        "@ax/simatic-1500-fileaccess": "9.0.3",
+        "@ax/simatic-1500-ip-configuration": "10.0.2",
+        "@ax/simatic-1500-motioncontrol-native-v5": "9.0.1",
+        "@ax/simatic-1500-motioncontrol-native-v6": "9.0.1",
+        "@ax/simatic-1500-motioncontrol-native-v7": "9.0.1",
+        "@ax/simatic-1500-motioncontrol-native-v8": "9.0.1",
+        "@ax/simatic-1500-motioncontrol-native-v9": "9.0.1",
+        "@ax/simatic-1500-motioncontrol-v7": "9.0.1",
+        "@ax/simatic-1500-motioncontrol-v7-mocking": "9.0.1",
+        "@ax/simatic-1500-motioncontrol-v8": "9.0.1",
+        "@ax/simatic-1500-motioncontrol-v8-mocking": "9.0.1",
+        "@ax/simatic-1500-motioncontrol-v9": "9.0.1",
+        "@ax/simatic-1500-motioncontrol-v9-mocking": "9.0.1",
+        "@ax/simatic-1500-tasks": "10.0.1",
+        "@ax/simatic-1500-alarming": "4.0.0",
+        "@ax/performance-info": "1.1.2",
+        "@ax/dcp-utility": "1.2.0",
+        "@ax/ax2tia": "11.0.18",
+        "@ax/plc-info": "3.1.0",
+        "@ax/hwc": "3.0.0",
+        "@ax/hw-s7-1500": "3.0.0",
+        "@ax/hwld": "3.0.0",
+        "@ax/system": "10.0.24",
+        "@ax/system-bitaccess": "10.0.24",
+        "@ax/system-conversion": "10.0.24",
+        "@ax/system-counters": "10.0.24",
+        "@ax/system-datetime": "10.0.24",
+        "@ax/system-edgedetection": "10.0.24",
+        "@ax/system-fastmath": "10.0.24",
+        "@ax/system-math": "10.0.24",
+        "@ax/system-selection": "10.0.24",
+        "@ax/system-serde": "10.0.24",
+        "@ax/system-strings": "10.0.24",
+        "@ax/system-timer": "10.0.24",
+        "@ax/simatic-1500-memoryaccess": "5.0.5",
+        "@ax/simatic-1500-hardware-utilities": "5.0.5",
+        "@ax/simatic-1500-crypto": "3.0.2",
+        "@ax/simatic-1500-diagnostics": "4.0.2",
+        "@ax/simatic-package-tool": "2.0.15",
+        "@ax/st-opcua.stc-plugin": "1.0.0",
+        "@ax/st-resources.stc-plugin": "3.0.23",
+        "@ax/xlad-transpile-cli": "1.2.0",
+        "@ax/st-lang-contrib-xlad": "1.2.0",
+        "@ax/simatic-1500-pointtopoint": "3.0.4",
+        "@ax/simatic-1500-modbusrtu": "3.0.5",
+        "@ax/simatic-1500-technology-objects": "3.0.8",
+        "@ax/sdk": "2504.0.0"
+      }
+    }
+  }
 }
