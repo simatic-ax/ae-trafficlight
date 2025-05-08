@@ -53,7 +53,7 @@ jobs:
         uses: simatic-ax/actions/apax-version@v3
         with:
           version: ${{ github.event.release.tag_name }}
-          path: ${{ env.TEMPLATE_PATH }}
+          path: ${{ env.TEMPLATE_PATH }}/template
 
       - name: Pack the template
         uses: simatic-ax/actions/apax-pack@v3
