@@ -3,10 +3,13 @@
 # here you can define the content
 
 files:
+  - .vscode
   - docs
   - src
   - test
   - watchlist
+  - .gitattributes
+  - .gitignore
   - apax-lock.json
   - apax.yml
   - README.md
