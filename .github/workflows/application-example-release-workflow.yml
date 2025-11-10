@@ -59,7 +59,7 @@ jobs:
       - name: Pack the template
         uses: simatic-ax/actions/apax-pack@v3
         with:
-          key: ${{ secrets.APAX_SIGNKEY }}
+          key: ${{ secrets.APAX_SIGNKEY_V2 }}
           path: ${{ env.TEMPLATE_PATH }}
 
       - name: Login to required registries
