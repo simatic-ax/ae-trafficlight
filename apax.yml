@@ -15,14 +15,14 @@ registries:
 
 # Dependencies
 catalogs:
-  "@ax/simatic-ax": 2504.0.0
+  "@ax/simatic-ax": 2510.0.0
 devDependencies:
-  "@ax/sdk": 2504.0.0
+  "@ax/sdk": 2510.0.0
   "@simatic-ax/snippetscollection": 1.0.0
 dependencies:
-  "@simatic-ax/statemachine": 8.0.0
-  "@simatic-ax/simple-control-modules": 8.0.0
-  "@simatic-ax/io": 9.0.0
+  "@simatic-ax/statemachine": 9.0.0
+  "@simatic-ax/simple-control-modules": 9.0.0
+  "@simatic-ax/io": 10.0.1
   "@ax/system-timer": 10.0.24
 
 # Project variables
