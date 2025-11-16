@@ -18,12 +18,12 @@ catalogs:
   "@ax/simatic-ax": 2504.0.0
 devDependencies:
   "@ax/sdk": 2504.0.0
-  "@simatic-ax/snippetscollection": 1.0.0
+  "@simatic-ax/snippetscollection": 1.1.0
 dependencies:
   "@simatic-ax/statemachine": 8.0.0
   "@simatic-ax/simple-control-modules": 8.0.0
   "@simatic-ax/io": 9.0.0
-  "@ax/system-timer": 10.0.24
+  "@ax/system-timer": 10.2.7
 
 # Project variables
 variables:
