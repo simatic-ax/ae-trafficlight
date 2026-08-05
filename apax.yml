@@ -26,7 +26,7 @@ devDependencies:
 dependencies:
   "@simatic-ax/statemachine": ^9.0.1
   "@simatic-ax/simple-control-modules": ^9.0.1
-  "@simatic-ax/io": ^10.0.1
+  "@simatic-ax/io": ^11.0.0
   "@ax/system-timer": ^10.2.7
 
 # Project variables
