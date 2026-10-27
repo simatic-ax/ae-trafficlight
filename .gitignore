@@ -6,3 +6,4 @@ tmp
 TestResult
 *.tgz
 /.vs
+out/

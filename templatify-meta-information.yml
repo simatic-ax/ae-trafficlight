@@ -12,5 +12,6 @@ files:
   - .gitignore
   - apax-lock.json
   - apax.yml
+  - make.yml
   - README.md
   - LICENSE.md
