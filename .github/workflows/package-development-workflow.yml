@@ -48,7 +48,7 @@ jobs:
           immutable: true
 
       - name: Build source code
-        uses: simatic-ax/actions/apax-build@v4
+        uses: simatic-ax/actions/apax-make@v4
 
       - name: Test source code
         uses: simatic-ax/actions/apax-test@v4

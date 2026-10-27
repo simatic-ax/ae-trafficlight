@@ -1,0 +1,8 @@
+MakeConfiguration:
+  - Name: Debug
+    Type: app
+    Targets:
+      - s7
+      - llvm
+    StCompiler:
+      Debug: true

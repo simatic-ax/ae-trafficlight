@@ -4,10 +4,6 @@ version: 0.0.0-placeholder
 type: app
 # Description will be displayed in the apax extension
 description: Application example for using the state machine library
-# Build targets
-targets:
-  - "1500"
-  - "llvm"
 
 # Registries from where the packages will be loaded
 registries:
@@ -19,30 +15,28 @@ publicKeys:
     "v1": "3792a7e926775425ccdd29ceed8c368c3008b5b33d7d5550b3cb1f58093e1dff"
     "v2": "7af3e394eb2b285a3d99ab8e1f745cc6db75704b30a80393339c721a92ffffd9"
 catalogs:
-  "@ax/simatic-ax": ^2510.0.0
+  "@ax-as/s7-catalog": ^2610.0.0
 devDependencies:
-  "@ax/sdk": ^2510.0.0
+  "@ax-as/s7-sdk": ^2610.0.0
   "@simatic-ax/snippetscollection": ^1.1.0
 dependencies:
-  "@simatic-ax/statemachine": ^9.0.1
-  "@simatic-ax/simple-control-modules": ^9.0.1
-  "@simatic-ax/io": ^10.0.1
-  "@ax/system-timer": ^10.2.7
+  "@simatic-ax/statemachine": ^10.0.0
+  "@simatic-ax/simple-control-modules": ^10.0.0
+  "@simatic-ax/io": ^12.0.0
+  "@ax-as/system-timer-lib": ^11.0.232
 
 # Project variables
 variables:
-  APAX_BUILD_ARGS:
-    - --debug
-  BIN_FOLDER: "./bin/1500"
+  BIN_FOLDER: "./out/Debug/s7"
   IP_ADDRESS: "192.168.0.1"
   WATCHLISTS: "./watchlist"
 
 # Apax scripts
 scripts:
-  # call 'apax load' to download the builded program to the target. An 'apax build' might be required upfront
+  # call 'apax load' to download the builded program to the target. An 'apax make' might be required upfront
   load: apax sld load --input $BIN_FOLDER --target $IP_ADDRESS --restart --accept-security-disclaimer --log debug
   # call 'apax dlplc' to build and download the application to the target
   dlplc:
-    - apax build
+    - apax make
     - apax load
 
